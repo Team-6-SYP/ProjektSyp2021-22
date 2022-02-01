@@ -64,9 +64,9 @@ Abgabetermin:	Juni 2021
 
 
 
-`	`**Projektauftraggeber	Projektleitung**
+   `	`**Projektauftraggeber	                           Projektleitung**
 
-`	`*i.V. David Klewein	 /t Franz Heumayr*
+   `	`*i.V. David Klewein	                                Franz Heumayr*
 
 
 Technische Informatik	23. März 2021	Seite 3/3
