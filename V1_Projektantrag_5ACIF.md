@@ -35,8 +35,8 @@
 
 
 
-1. # **Projektantrag**
-   1. ## **Projekteckdaten**
+- # **Projektantrag**
+   - ## **Projekteckdaten**
 **Projekttitel:	Time-Management Software for line bus traffic**
 
 **Projektnummer:	P002**
