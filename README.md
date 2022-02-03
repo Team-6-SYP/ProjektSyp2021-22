@@ -35,7 +35,7 @@ Für die Backend-Entwicklung sind bereits alle Kenntnisse vorhanden. Frontendken
   - einheitlicher Abrechnungsvorgang
 - Automatisiertes Abrechnungsformular zur Reduzierung von Aufwand und Fehlern
 - (optional) Mobilanwendung zur erleichterten Eingabe
-- (optional) Berechnung es voraussichtlichen Bruttoentgelt pro Mitarbeiter
+- (optional) Berechnung des voraussichtlichen Bruttoentgelt pro Mitarbeiter
   - ## **Projektinhalte**
 - Multiuseranwendung
   - MitarbeiterInnen:
