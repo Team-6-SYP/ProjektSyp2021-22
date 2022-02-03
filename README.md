@@ -62,11 +62,11 @@ Abgabetermin:	Juni 2021
 
 
 
+```txt
 
+   Projektauftraggeber	                           Projektleitung
 
-   `	`**Projektauftraggeber	                           Projektleitung**
-
-   `	`*i.V. David Klewein	                                Franz Heumayr*
-
-
+   i.V. David Klewein	                           Franz Heumayr
+   
+```
 System- und Projektplanung	Februar 2022
