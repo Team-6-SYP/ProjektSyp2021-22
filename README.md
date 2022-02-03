@@ -24,9 +24,9 @@ HTBLA Leonding	Time-Management Software	5ACIF
 **Projektmitglieder:**	Christian Knabb
 `	`Sebastian Gruber
 - ## **Ausgangslage**
-Mitterbeiter eines mittelständischen Busunternehmens müssen in Ihrer Freizeit Zeitaufzeichnungen laut Vorgabe des Unternehmens erstellen. Aufgrund Interpretationsmöglichkeiten des auszufüllenden Formulars ist es einerseits schwierig für die Mitarbeiter klar nachzuvollziehen, ob alle Angaben korrekt angegeben wurden und andererseits muss die Lohnabrechnung sich individuell auf die Formulare der Mitarbeiter einstellen.
+Mitarbeiter eines mittelständischen Busunternehmens müssen in Ihrer Freizeit Zeitaufzeichnungen laut Vorgabe des Unternehmens erstellen. Aufgrund Interpretationsmöglichkeiten des auszufüllenden Formulars ist es einerseits schwierig für die Mitarbeiter klar nachzuvollziehen, ob alle Angaben korrekt angegeben wurden und andererseits muss die Lohnabrechnung sich individuell auf die Formulare der Mitarbeiter einstellen.
 - ## **Generelle Rahmenbedingungen**
-Durch die Ausarbeitung im Rahmen eines Ausbildungsprojektes der HTL Leonding entstehen keine finanziellen Belastungen für die/den AuftragsgeberIn. Ressourcen werden vom Projektteam zur Verfügung gestellt.
+Durch die Ausarbeitung, im Rahmen eines Ausbildungsprojektes der HTL Leonding, entstehen keine finanziellen Belastungen für die/den AuftragsgeberIn. Ressourcen werden vom Projektteam zur Verfügung gestellt.
 
 Für die Backend-Entwicklung sind bereits alle Kenntnisse vorhanden. Frontendkenntnisse müssen sich noch vom Projektteam angeeignet werden.
 - ## **Projektziele**
