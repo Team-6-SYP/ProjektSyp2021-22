@@ -1,0 +1,12 @@
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\bin\Debug\net6.0\Entwurf.deps.json
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\bin\Debug\net6.0\Entwurf.dll
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\bin\Debug\net6.0\ref\Entwurf.dll
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\bin\Debug\net6.0\Entwurf.pdb
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\obj\Debug\net6.0\Entwurf.csproj.AssemblyReference.cache
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\obj\Debug\net6.0\Entwurf.GeneratedMSBuildEditorConfig.editorconfig
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\obj\Debug\net6.0\Entwurf.AssemblyInfoInputs.cache
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\obj\Debug\net6.0\Entwurf.AssemblyInfo.cs
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\obj\Debug\net6.0\Entwurf.csproj.CoreCompileInputs.cache
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\obj\Debug\net6.0\Entwurf.dll
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\obj\Debug\net6.0\ref\Entwurf.dll
+D:\HTL Teamordner\23 SYP Klewein 2021_22\Projektordner\Time-Management\Entwurf\Entwurf\obj\Debug\net6.0\Entwurf.pdb

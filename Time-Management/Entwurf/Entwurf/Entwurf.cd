@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Entwurf.GlobalService">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GlobalService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entwurf.Identity">
+    <Position X="7.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Identity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entwurf.Rowversion">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rowversion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entwurf.Break">
+    <Position X="6" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAABIAAAAAAAAAAAAAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Break.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Service" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Entwurf.PreperationTime">
+    <Position X="6" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAIAAAAAAIAAAAAAAAAAIAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PreperationTime.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Service" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Entwurf.Employee">
+    <Position X="15.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAIAAAAAgAAACAAAIACAAAABAACSAAAAAAAA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="VacationAndSickleaveRates" />
+      <Property Name="HourlyWageRates" />
+      <Property Name="MonthlyVacationDays" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Entwurf.Person">
+    <Position X="15.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEAAACAAAECIAEAAwAAAAAgAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entwurf.Rate">
+    <Position X="18.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAACAAAAAABAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Rate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entwurf.GlobalTimesheetProperty">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAIEAAAAABAAAAAAAAAAAAEAAAAAgAAgA=</HashCode>
+      <FileName>GlobalTimesheetProperty.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="TimesheetDays" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Entwurf.PublicHoliday">
+    <Position X="13" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PublicHoliday.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entwurf.HourlyWageRate">
+    <Position X="14" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>HourlyWageRate.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Employee" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Entwurf.VactaionAndSickleaveRate">
+    <Position X="15.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>VactaionAndSickleaveRate.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Employee" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Entwurf.MounthlyVacationDay">
+    <Position X="17.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>MounthlyVacationDay.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Employee" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Entwurf.TimesheetDay">
+    <Position X="2.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAICAAAAAAAAAAAAIACAAIAAAAAAAAAAACAAA=</HashCode>
+      <FileName>TimesheetDay.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GlobalTimesheetProperty" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Entwurf.ServiceTemplate">
+    <Position X="2" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgABAAQAAAQAAAAAAEAAQAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>ServiceTemplate.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Breaks" />
+      <Property Name="PreperationTimes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="Entwurf.Weekday">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAIAACAAAAAAAAAAACAAIACAIAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Weekday.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
