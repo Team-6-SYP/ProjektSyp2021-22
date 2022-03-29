@@ -5,7 +5,7 @@ HTBLA Leonding	Time-Management Software	5ACIF
 **Time-Management Software for line bus traffic**
 
 
-|<p></p><p>Projektleiter:</p><p>Franz Heumayr</p><p></p>|<p></p><p>Jahrgang:	5ACIF</p><p>`	`2021/22</p>|
+|<p></p><p>Projektleiter:</p><p>Franz Heumayr</p><p></p>|<p></p><p>Jahrgang:	5ACIF</p><p>	2021/22</p>|
 | :- | :- |
 
 
@@ -22,7 +22,7 @@ HTBLA Leonding	Time-Management Software	5ACIF
 **Projektleiter:**	Franz Heumayr
 
 **Projektmitglieder:**	Christian Knabb
-`	`Sebastian Gruber
+	Sebastian Gruber
 - ## **Ausgangslage**
 Mitarbeiter eines mittelständischen Busunternehmens müssen in Ihrer Freizeit Zeitaufzeichnungen laut Vorgabe des Unternehmens erstellen. Aufgrund Interpretationsmöglichkeiten des auszufüllenden Formulars ist es einerseits schwierig für die Mitarbeiter klar nachzuvollziehen, ob alle Angaben korrekt angegeben wurden und andererseits muss die Lohnabrechnung sich individuell auf die Formulare der Mitarbeiter einstellen.
 - ## **Generelle Rahmenbedingungen**
