@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace QTTimeManagement.Logic.Entities
 {
     [Table("Services", Schema = "timemanagement")]
-    public class Service
+    public class Service : VersionEntity
     {
         [Required]
         [MinLength(1)]

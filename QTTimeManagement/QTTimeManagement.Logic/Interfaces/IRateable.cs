@@ -10,6 +10,6 @@ namespace QTTimeManagement.Logic.Interfaces
     public interface IRateable : IValidityable
     {
         public RateType RateType { get; set; }
-        public decimal RateAmount { get; set; }
+        public double RateAmount { get; set; }
     }
 }

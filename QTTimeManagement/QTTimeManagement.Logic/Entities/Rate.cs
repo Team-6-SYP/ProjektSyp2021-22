@@ -11,13 +11,13 @@ namespace QTTimeManagement.Logic.Entities
     [Table("Rates", Schema = "timemanagement")]
     public class Rate : ValidityEntity, IRateable
     {
-        private decimal rateAmount;
+        private double rateAmount;
 
         [Required]
         public RateType RateType { get; set; }
 
         [Required]
-        public decimal RateAmount
+        public double RateAmount
         {
             get => rateAmount; set
             {
