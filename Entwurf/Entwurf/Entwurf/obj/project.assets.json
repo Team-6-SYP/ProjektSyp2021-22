@@ -8,28 +8,25 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\f_heu\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\franz\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Time-Management\\Entwurf\\Entwurf\\Entwurf.csproj",
+      "projectUniqueName": "C:\\SypProjekt\\Entwurf\\Entwurf\\Entwurf\\Entwurf.csproj",
       "projectName": "Entwurf",
-      "projectPath": "D:\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Time-Management\\Entwurf\\Entwurf\\Entwurf.csproj",
-      "packagesPath": "C:\\Users\\f_heu\\.nuget\\packages\\",
-      "outputPath": "D:\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Time-Management\\Entwurf\\Entwurf\\obj\\",
+      "projectPath": "C:\\SypProjekt\\Entwurf\\Entwurf\\Entwurf\\Entwurf.csproj",
+      "packagesPath": "C:\\Users\\franz\\.nuget\\packages\\",
+      "outputPath": "C:\\SypProjekt\\Entwurf\\Entwurf\\Entwurf\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\f_heu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\franz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -68,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

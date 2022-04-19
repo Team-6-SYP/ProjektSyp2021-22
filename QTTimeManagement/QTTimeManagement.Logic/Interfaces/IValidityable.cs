@@ -8,7 +8,7 @@ namespace QTTimeManagement.Logic.Interfaces
 {
     public interface IValidityable
     {
-        public DateOnly Begin { get; set; }
-        public DateOnly? End { get; set; }
+        public DateTime Begin { get; set; }
+        public DateTime? End { get; set; }
     }
 }

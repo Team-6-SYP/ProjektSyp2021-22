@@ -12,7 +12,7 @@ namespace QTTimeManagement.Logic.Entities
     public class Employee : Person
     {
         [Required]
-        public DateOnly HireDate { get; set; }
+        public DateTime HireDate { get; set; }
 
         [Required]
         public double WeeklyHours { get; set; }

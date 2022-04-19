@@ -10,8 +10,8 @@ namespace QTTimeManagement.Logic.Entities
     public class ValidityEntity : VersionEntity, IValidityable
     {
         [Required]
-        public DateOnly Begin { get; set; }
+        public DateTime Begin { get; set; }
 
-        public DateOnly? End { get; set; }
+        public DateTime? End { get; set; }
     }
 }

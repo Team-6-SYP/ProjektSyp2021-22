@@ -11,9 +11,9 @@ namespace QTTimeManagement.Logic.Entities
     public class CollectiveAgreement : ValidityEntity
     {
         #region nighthours
-        public TimeOnly? NightHoursBegin { get; set; }
+        public DateTime? NightHoursBegin { get; set; }
 
-        public TimeOnly? NightHoursEnd { get; set; }
+        public DateTime? NightHoursEnd { get; set; }
         #endregion
 
         #region break

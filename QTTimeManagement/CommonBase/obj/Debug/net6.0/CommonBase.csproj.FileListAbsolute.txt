@@ -1,0 +1,12 @@
+C:\SypProjekt\QTTimeManagement\CommonBase\bin\Debug\net6.0\CommonBase.deps.json
+C:\SypProjekt\QTTimeManagement\CommonBase\bin\Debug\net6.0\CommonBase.dll
+C:\SypProjekt\QTTimeManagement\CommonBase\bin\Debug\net6.0\CommonBase.pdb
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.csproj.AssemblyReference.cache
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.AssemblyInfoInputs.cache
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.AssemblyInfo.cs
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.csproj.CoreCompileInputs.cache
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.dll
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\refint\CommonBase.dll
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.pdb
+C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\ref\CommonBase.dll

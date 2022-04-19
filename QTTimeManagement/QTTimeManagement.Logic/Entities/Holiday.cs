@@ -18,6 +18,6 @@ namespace QTTimeManagement.Logic.Entities
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

@@ -1,0 +1,15 @@
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\bin\Debug\net6.0\QTTimeManagement.Logic.deps.json
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\bin\Debug\net6.0\QTTimeManagement.Logic.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\bin\Debug\net6.0\QTTimeManagement.Logic.pdb
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\bin\Debug\net6.0\CommonBase.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\bin\Debug\net6.0\CommonBase.pdb
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\QTTimeManagement.Logic.csproj.AssemblyReference.cache
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\QTTimeManagement.Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\QTTimeManagement.Logic.AssemblyInfoInputs.cache
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\QTTimeManagement.Logic.AssemblyInfo.cs
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\QTTimeManagement.Logic.csproj.CoreCompileInputs.cache
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\QTTimeManagement.Logic.csproj.CopyComplete
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\QTTimeManagement.Logic.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\refint\QTTimeManagement.Logic.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\QTTimeManagement.Logic.pdb
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic\obj\Debug\net6.0\ref\QTTimeManagement.Logic.dll

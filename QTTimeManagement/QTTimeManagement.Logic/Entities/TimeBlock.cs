@@ -18,10 +18,10 @@ namespace QTTimeManagement.Logic.Entities
         public TimeType TimeType { get; set; }
 
         [Required]
-        public TimeOnly Begin { get; set; }
+        public DateTime Begin { get; set; }
 
         [Required]
-        public TimeOnly End { get; set; }
+        public DateTime End { get; set; }
 
         [Required]
         public int Index { get; set; }

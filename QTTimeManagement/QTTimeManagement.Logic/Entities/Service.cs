@@ -19,7 +19,7 @@ namespace QTTimeManagement.Logic.Entities
         public string? Notes { get; set; }
 
         [Required]
-        public DateOnly ServiceDay { get; set; }   
+        public DateTime ServiceDay { get; set; }   
 
         public bool IsNotCompliant { get; set; }
         public string? NotCompliantNotice { get; set; }
@@ -33,6 +33,7 @@ namespace QTTimeManagement.Logic.Entities
         public Employee? Employee { get; set; }
         public ServiceTemplate? ServiceTemplate { get; set; }
 
+        [NotMapped]
         public IEnumerable<ITimeable> ServiceBlocks { get; set; } = new List<ITimeable>();
     }
 }

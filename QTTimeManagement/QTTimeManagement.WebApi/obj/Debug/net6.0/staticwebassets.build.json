@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "et80o7UGf2V36p42VnZ5sH7oru0MUKcquMBWFZXJr44=",
+  "Source": "QTTimeManagement.WebApi",
+  "BasePath": "_content/QTTimeManagement.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

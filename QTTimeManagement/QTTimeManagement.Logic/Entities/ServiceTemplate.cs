@@ -25,7 +25,7 @@ namespace QTTimeManagement.Logic.Entities
 
 
         //navigation properties
-
+        [NotMapped]
         public IEnumerable<ITimeable> ServiceBlocks { get; set; } = new List<ITimeable>();
 
     }
