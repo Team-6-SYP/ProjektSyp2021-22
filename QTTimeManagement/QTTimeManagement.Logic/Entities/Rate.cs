@@ -8,9 +8,24 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Entities
 {
+    [Table("Rates", Schema = "timemanagement")]
     public class Rate : ValidityEntity, IRateable
     {
-        public RateType RateType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal RateAmount { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private decimal rateAmount;
+
+        [Required]
+        public RateType RateType { get; set; }
+
+        [Required]
+        public decimal RateAmount
+        {
+            get => rateAmount; set
+            {
+                if (value < 0)
+                    throw new Logic.Modules.Exceptions.LogicException("Rate has to be a positiv value");
+
+                rateAmount = value;
+            }
+        }
     }
 }

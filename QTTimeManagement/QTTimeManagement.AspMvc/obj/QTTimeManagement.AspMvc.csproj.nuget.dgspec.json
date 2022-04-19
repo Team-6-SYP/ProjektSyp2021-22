@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.AspMvc\\QTTimeManagement.AspMvc.csproj": {}
+    "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.AspMvc\\QTTimeManagement.AspMvc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\CommonBase.csproj": {
+    "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
+        "projectUniqueName": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
         "projectName": "CommonBase",
-        "projectPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
+        "projectPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
         "packagesPath": "C:\\Users\\franz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\obj\\",
+        "outputPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -62,14 +62,14 @@
         }
       }
     },
-    "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.AspMvc\\QTTimeManagement.AspMvc.csproj": {
+    "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.AspMvc\\QTTimeManagement.AspMvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.AspMvc\\QTTimeManagement.AspMvc.csproj",
+        "projectUniqueName": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.AspMvc\\QTTimeManagement.AspMvc.csproj",
         "projectName": "QTTimeManagement.AspMvc",
-        "projectPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.AspMvc\\QTTimeManagement.AspMvc.csproj",
+        "projectPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.AspMvc\\QTTimeManagement.AspMvc.csproj",
         "packagesPath": "C:\\Users\\franz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.AspMvc\\obj\\",
+        "outputPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.AspMvc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -90,8 +90,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj": {
-                "projectPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj"
+              "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj": {
+                "projectPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj"
               }
             }
           }
@@ -133,14 +133,14 @@
         }
       }
     },
-    "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj": {
+    "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
+        "projectUniqueName": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
         "projectName": "QTTimeManagement.Logic",
-        "projectPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
+        "projectPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
         "packagesPath": "C:\\Users\\franz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.Logic\\obj\\",
+        "outputPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -161,8 +161,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\CommonBase.csproj": {
-                "projectPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\CommonBase.csproj"
+              "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj": {
+                "projectPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj"
               }
             }
           }

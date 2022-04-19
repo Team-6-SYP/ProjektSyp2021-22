@@ -9,7 +9,9 @@ namespace QTTimeManagement.Logic.Entities
 {
     public class ValidityEntity : VersionEntity, IValidityable
     {
-        public DateOnly Begin { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateOnly? End { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        [Required]
+        public DateOnly Begin { get; set; }
+
+        public DateOnly? End { get; set; }
     }
 }

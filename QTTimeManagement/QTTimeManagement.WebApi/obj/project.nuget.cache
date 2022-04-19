@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+92+gaEbMsC0G4yyfixUKxx+UnOvQT0ezjDenONqUH0NOeyJcWUwWkPdYnfyKh5zg82K+Ri3r/8wqAl063PuMA==",
+  "dgSpecHash": "UGlKREeIJcdJG4PTGwAyEgfonTqW3RKmr+sUi01LGf1ZnJoWoBWvSYVQRy9skXdDNkli3wICxH8FSN7oBzXRHw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.WebApi\\QTTimeManagement.WebApi.csproj",
+  "projectFilePath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.WebApi\\QTTimeManagement.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\franz\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\franz\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

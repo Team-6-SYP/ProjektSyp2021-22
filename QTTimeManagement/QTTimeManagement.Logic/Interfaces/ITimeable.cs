@@ -13,6 +13,6 @@ namespace QTTimeManagement.Logic.Interfaces
         public TimeOnly Begin { get; set; }
         public TimeOnly End { get; set; }
         public TimeSpan Duration => End - Begin;
-        public int Position { get; set; }
+        public int Index { get; set; }
     }
 }

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
+      "projectUniqueName": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
       "projectName": "CommonBase",
-      "projectPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
+      "projectPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
       "packagesPath": "C:\\Users\\franz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\CommonBase\\obj\\",
+      "outputPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

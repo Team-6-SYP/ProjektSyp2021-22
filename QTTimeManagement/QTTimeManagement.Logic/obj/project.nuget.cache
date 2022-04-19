@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H9gRAMbRjgCEqNVWPs33tdmI0KRs3gp5WuZxskiZxlamGRYcqEdsfpjpRx/DgYg5tsrjQVdkvBer2auXR6tM3g==",
+  "dgSpecHash": "l0P23Fsg9RTgruN8/AKIw2SqS02b2HSSvn/FEWTgILI+iL3ptIELo95gRknWL92dqqpZYSBYHUqedMWWRfnIMA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
+  "projectFilePath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\franz\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\franz\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

@@ -7,19 +7,32 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Entities
 {
+    [Table("Services", Schema = "timemanagement")]
     public class Service
     {
-        public string Name { get; set; }
+        [Required]
+        [MinLength(1)]
+        [MaxLength(150)]
+        public string Name { get; set; } = string.Empty;
+
+        [MaxLength(1000)]
         public string? Notes { get; set; }
-        public DateOnly ServiceDay { get; set; }
 
-        public Employee Employee { get; set; }
-
-        public int? ServiceTemplateId { get; set; }
-
-        public IEnumerable<ITimeable> ServiceBlocks { get; set; } = new List<ITimeable>();
+        [Required]
+        public DateOnly ServiceDay { get; set; }   
 
         public bool IsNotCompliant { get; set; }
         public string? NotCompliantNotice { get; set; }
+
+        [Required]
+        public int EmployeeId { get; set; }
+        public int? ServiceTemplateId { get; set; }
+
+
+        //navigation Properties
+        public Employee? Employee { get; set; }
+        public ServiceTemplate? ServiceTemplate { get; set; }
+
+        public IEnumerable<ITimeable> ServiceBlocks { get; set; } = new List<ITimeable>();
     }
 }

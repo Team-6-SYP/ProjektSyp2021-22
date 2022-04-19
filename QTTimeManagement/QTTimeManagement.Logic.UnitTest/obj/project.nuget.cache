@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bgVwey+O+qCnkvlTimiZUZLvQNVDPlnXn4i/98CbAUO6KEGZ1KSEa9BFlp3hZ+elJbrxSRCHvYOENJzijAF6tg==",
+  "dgSpecHash": "kf0JiTcAd+Jm4lvuCBBorwIoSPxv71SNxQM8F+0mHYl0w0FLJxUO3PRdcoMXGx6YxKjaoq51wFftz97zW77MXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\franz\\HTL Teamordner\\23 SYP Klewein 2021_22\\Projektordner\\Solution-Item\\QTTimeManagement\\QTTimeManagement.Logic.UnitTest\\QTTimeManagement.Logic.UnitTest.csproj",
+  "projectFilePath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic.UnitTest\\QTTimeManagement.Logic.UnitTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\franz\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\franz\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",

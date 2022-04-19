@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Entities
 {
+    [Table("CollectiveAgreements", Schema = "timemanagement")]
     public class CollectiveAgreement : ValidityEntity
     {
         #region nighthours
-        public TimeOnly NightHoursBegin { get; set; }
+        public TimeOnly? NightHoursBegin { get; set; }
 
-        public TimeOnly NightHoursEnd { get; set; }
+        public TimeOnly? NightHoursEnd { get; set; }
         #endregion
 
         #region break
@@ -29,12 +30,12 @@ namespace QTTimeManagement.Logic.Entities
         Ein Ruhepausenteil von 15 Minuten ist dann unbezahlt, wenn er innerhalb eines Zeitraumes von frühestens 2 Stunden nach Beginn bzw. spätestens 2 Stunden vor Ende des Dienstes liegt.        
         */
 
-        public TimeSpan MaximumBreakDuration { get; set; }
+        public TimeSpan? MaximumBreakDuration { get; set; }
 
-        public TimeSpan MinWorkingTimeAfterBegin { get; set; }
-        public TimeSpan MinWorkingTimeBeforeEnd { get; set; }
-        public TimeSpan MinTime30MinBreakAfterBegin { get; set; }
-        public TimeSpan MinTime30MinBreakBeforeEnd { get; set; }
+        public TimeSpan? MinWorkingTimeAfterBegin { get; set; }
+        public TimeSpan? MinWorkingTimeBeforeEnd { get; set; }
+        public TimeSpan? MinTime30MinBreakAfterBegin { get; set; }
+        public TimeSpan? MinTime30MinBreakBeforeEnd { get; set; }
         #endregion
 
         #region rest time
@@ -75,14 +76,14 @@ namespace QTTimeManagement.Logic.Entities
         (Sonstige Fahrzeuge) beträgt maximal 14 Stunden.
          */
 
-        public TimeSpan MaxOperatingTime { get; set; }
+        public TimeSpan? MaxOperatingTime { get; set; }
 
         /*
         Wird vom Lenker im Kraftfahrlinienverkehr an einem Kalendertag eine Dienstleistung verlangt, 
         müssen unbeschadet der Dauer dieser Dienstleistung mindestens 6 Stunden 30 Minuten Arbeitszeit 
         verrechnet werden, wobei Abschnitt V entsprechend zu berücksichtigen ist. 
         */
-        public TimeSpan MinWorkingTime { get; set; }
+        public TimeSpan? MinWorkingTime { get; set; }
 
         /*
         Für die Durchführung von Vor- und Abschlussarbeiten im Kraftfahrlinienverkehr ist daher in den Fällen, 
@@ -90,15 +91,15 @@ namespace QTTimeManagement.Logic.Entities
         dem Fahrpersonal der dafür notwendige Zeitaufwand in Form einer Zeitpauschale 
         von 25 Minuten einmalig für jede Tagesarbeitszeit vom Arbeitgeber zur Verfügung zu stellen.
         */
-        public TimeSpan PreperationAndPreworkTime { get; set; }
+        public TimeSpan? PreperationAndPreworkTime { get; set; }
 
         #endregion
 
         #region overtime
-        public int OverTimeThresholdWeeklyHours { get; set; }
-        public double OvertimeSurchargeWeeklyHours { get; set; }
-        public double OvertimeSurchargeBeforeWeeklyHourThreshold { get; set; }
-        public double HolidaySurcharge { get; set; }
+        public int? OverTimeThresholdWeeklyHours { get; set; }
+        public double? OvertimeSurchargeWeeklyHours { get; set; }
+        public double? OvertimeSurchargeBeforeWeeklyHourThreshold { get; set; }
+        public double? HolidaySurcharge { get; set; }
 
 
         #endregion
