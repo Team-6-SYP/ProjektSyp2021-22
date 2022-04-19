@@ -35,5 +35,7 @@ namespace QTTimeManagement.Logic.Entities
 
         [NotMapped]
         public IEnumerable<ITimeable> ServiceBlocks { get; set; } = new List<ITimeable>();
+
+        //Kommentar
     }
 }
