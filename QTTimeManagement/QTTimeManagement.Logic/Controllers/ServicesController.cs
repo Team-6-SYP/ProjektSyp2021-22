@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using QTTimeManagement.Logic.Entities;
+
+namespace QTTimeManagement.Logic.Controllers
+{
+    public class ServicesController : GenericController<Service>
+    {
+        public ServicesController() : base()
+        {
+        }
+        public ServicesController(ControllerObject other) : base(other)
+        { 
+        }
+
+        #region Get
+        public override Task<Service[]> GetAllAsync()
+        {
+            return base.GetAllAsync();
+        }
+        public override ValueTask<Service?> GetByIdAsync(int id)
+        {
+            return base.GetByIdAsync(id);   
+        }
+        #endregion
+
+        #region Insert
+        public override Task<IEnumerable<Service>> InsertAsync(IEnumerable<Service> entities)
+        {
+            if (entities == null) throw new ArgumentNullException("InsertAsync Service (null)", nameof(entities));
+            foreach (var item in entities)
+            {
+                if (item.Name == String.Empty) throw new ArgumentException("InsertAsync Service Name ist Leerstring", nameof(item)); 
+                // ServiceDay?  
+            }
+            return base.InsertAsync(entities);
+        }
+        public override Task<Service> InsertAsync(Service entity)
+        {
+            if (entity == null) throw new ArgumentNullException("InsertAsync Service (null)", nameof(entity));
+            if (entity.Name == String.Empty) throw new ArgumentException("InsertAsync Service Name ist Leerstring", nameof(entity));
+
+            return base.InsertAsync(entity);
+        }
+        #endregion
+
+        #region Update
+        public override Task<IEnumerable<Service>> UpdateAsync(IEnumerable<Service> entities)
+        {
+            if (entities == null) throw new ArgumentNullException("UpdateAsync Service (null)", nameof(entities));
+            foreach (var item in entities)
+            {
+                if (item.Name == String.Empty) throw new ArgumentException("UpdateAsync Service Name ist Leerstring", nameof(item));
+            }
+            return base.UpdateAsync(entities);
+        }
+        public override Task<Service> UpdateAsync(Service entity)
+        {
+            if (entity == null) throw new ArgumentNullException("UpdateAsync Service (null)", nameof(entity));
+            if (entity.Name == String.Empty) throw new ArgumentException("UpdateAsync Service Name ist Leerstring", nameof(entity));
+            return base.UpdateAsync(entity);
+        }
+        #endregion
+
+        #region Delete
+        public override Task DeleteAsync(int id)
+        {
+            return base.DeleteAsync(id);
+        }
+        #endregion
+    }
+}
