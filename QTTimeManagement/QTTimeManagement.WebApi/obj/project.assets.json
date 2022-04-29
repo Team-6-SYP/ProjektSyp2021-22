@@ -3604,23 +3604,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\grube\\.nuget\\packages\\": {},
+    "C:\\Users\\franz\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.WebApi\\QTTimeManagement.WebApi.csproj",
+      "projectUniqueName": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.WebApi\\QTTimeManagement.WebApi.csproj",
       "projectName": "QTTimeManagement.WebApi",
-      "projectPath": "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.WebApi\\QTTimeManagement.WebApi.csproj",
-      "packagesPath": "C:\\Users\\grube\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.WebApi\\obj\\",
+      "projectPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.WebApi\\QTTimeManagement.WebApi.csproj",
+      "packagesPath": "C:\\Users\\franz\\.nuget\\packages\\",
+      "outputPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\grube\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\franz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3635,11 +3635,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\CommonBase\\CommonBase.csproj": {
-              "projectPath": "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\CommonBase\\CommonBase.csproj"
+            "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj": {
+              "projectPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj"
             },
-            "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj": {
-              "projectPath": "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj"
+            "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj": {
+              "projectPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj"
             }
           }
         }
@@ -3677,16 +3677,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.WebApi\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

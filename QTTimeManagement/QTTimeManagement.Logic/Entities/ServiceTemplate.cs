@@ -23,10 +23,10 @@ namespace QTTimeManagement.Logic.Entities
         [MaxLength(1000)]
         public string? Notes { get; set; }
 
-
         //navigation properties
-        [NotMapped]
-        public IEnumerable<ITimeable> ServiceBlocks { get; set; } = new List<ITimeable>();
+        public IEnumerable<TimeBlock> TimeBlocks { get; set; } = new List<TimeBlock>();
+
+        public IEnumerable<TimeBlock> Preperations => TimeBlocks.Where(t => t.TimeType == TimeType.Preperation);
 
     }
 }

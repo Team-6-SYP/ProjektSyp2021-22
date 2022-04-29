@@ -8,7 +8,7 @@ namespace QTTimeManagement.Logic.Enumerations
 {
     public enum TimeType
     {
-        Preperation,
+        Preperation = 1,
         Operation,
         Break,
         Absence

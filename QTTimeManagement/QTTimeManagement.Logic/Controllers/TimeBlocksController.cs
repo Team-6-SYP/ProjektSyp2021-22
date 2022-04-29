@@ -7,7 +7,7 @@ using QTTimeManagement.Logic.Entities;
 
 namespace QTTimeManagement.Logic.Controllers
 {
-    public class TimeBlocksController : GenericController<TimeBlock>
+    internal sealed class TimeBlocksController : GenericController<TimeBlock>
     {
         public TimeBlocksController() : base()
         {

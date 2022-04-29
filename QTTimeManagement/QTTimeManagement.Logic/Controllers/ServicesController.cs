@@ -7,7 +7,7 @@ using QTTimeManagement.Logic.Entities;
 
 namespace QTTimeManagement.Logic.Controllers
 {
-    public class ServicesController : GenericController<Service>
+    public sealed class ServicesController : GenericController<Service>
     {
         public ServicesController() : base()
         {
@@ -19,6 +19,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region Get
         public override Task<Service[]> GetAllAsync()
         {
+            //loading Timeblocks --> if not differ form Template --> load Template
             return base.GetAllAsync();
         }
         public override ValueTask<Service?> GetByIdAsync(int id)
@@ -30,6 +31,8 @@ namespace QTTimeManagement.Logic.Controllers
         #region Insert
         public override Task<IEnumerable<Service>> InsertAsync(IEnumerable<Service> entities)
         {
+            //if timeblocks differs form Template --> save copy
+            //else only ref Template
             CheckEntity(entities);
             return base.InsertAsync(entities);
         }
@@ -44,6 +47,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region Update
         public override Task<IEnumerable<Service>> UpdateAsync(IEnumerable<Service> entities)
         {
+           
             CheckEntity(entities);
             return base.UpdateAsync(entities);
         }

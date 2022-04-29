@@ -21,20 +21,25 @@ namespace QTTimeManagement.Logic.Entities
         [Required]
         public DateTime ServiceDay { get; set; }   
 
+        [Required]
+        public int EmployeeId { get; set; }
+        [Required]
+        public int ServiceTemplateId { get; set; }
+
+        public bool IsSameAsTemplate { get; set; } = true;
+
+        //CollectiveAgreementControllerCheck
         public bool IsNotCompliant { get; set; }
         public string? NotCompliantNotice { get; set; }
 
-        [Required]
-        public int EmployeeId { get; set; }
-        public int? ServiceTemplateId { get; set; }
-
+        //Updated though Templete
+        public bool IsUpdatedThroughTemplate { get; set; }
+        public string? ChangesThroughTemplateNotice { get; set; }
 
         //navigation Properties
         public Employee? Employee { get; set; }
         public ServiceTemplate? ServiceTemplate { get; set; }
-
-        [NotMapped]
-        public IEnumerable<ITimeable> ServiceBlocks { get; set; } = new List<ITimeable>();
+        public IEnumerable<TimeBlock> TimeBlocks { get; set; } = new List<TimeBlock>();
 
         //Kommentar
     }

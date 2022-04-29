@@ -17,15 +17,16 @@ namespace QTTimeManagement.Logic.Entities
         [Required]
         public TimeType TimeType { get; set; }
 
-        [Required]
-        public DateTime Begin { get; set; }
+        public DateTime? Begin { get; set; } //TimeOnly
 
         [Required]
-        public DateTime End { get; set; }
+        public DateTime End { get; set; } //TimeOnly
 
-        [Required]
-        public int Index { get; set; }
+        [NotMapped]
+        public TimeOnly BeginTimeOnly => Begin == null ? new TimeOnly() : TimeOnly.FromDateTime(Begin.Value);
 
+        [NotMapped]
+        public TimeOnly EndTimeOnly => TimeOnly.FromDateTime(End);
 
         //navigation Properties
         public Service? Service { get; set; }

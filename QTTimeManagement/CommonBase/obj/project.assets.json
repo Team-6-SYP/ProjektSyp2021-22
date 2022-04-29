@@ -8,23 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\grube\\.nuget\\packages\\": {},
+    "C:\\Users\\franz\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
+      "projectUniqueName": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
       "projectName": "CommonBase",
-      "projectPath": "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
-      "packagesPath": "C:\\Users\\grube\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\CommonBase\\obj\\",
+      "projectPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj",
+      "packagesPath": "C:\\Users\\franz\\.nuget\\packages\\",
+      "outputPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\grube\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\franz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -65,16 +65,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\grube\\Documents\\GitHub\\ProjektSyp2021-22\\QTTimeManagement\\CommonBase\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

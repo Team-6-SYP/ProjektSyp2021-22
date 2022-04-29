@@ -7,7 +7,7 @@ using QTTimeManagement.Logic.Entities;
 
 namespace QTTimeManagement.Logic.Controllers
 {
-    public class ServiceTemplatesController : GenericController<ServiceTemplate>
+    public sealed class ServiceTemplatesController : GenericController<ServiceTemplate>
     {
         public ServiceTemplatesController() : base()
         {
@@ -30,12 +30,14 @@ namespace QTTimeManagement.Logic.Controllers
         #region Insert
         public override Task<IEnumerable<ServiceTemplate>> InsertAsync(IEnumerable<ServiceTemplate> entities)
         {
+            //Timeblock insert
             CheckEntity(entities);
 
             return base.InsertAsync(entities);
         }
         public override Task<ServiceTemplate> InsertAsync(ServiceTemplate entity)
         {
+            //Timeblock insert
             CheckEntity(entity);
             return base.InsertAsync(entity);
         }
@@ -44,12 +46,16 @@ namespace QTTimeManagement.Logic.Controllers
         #region Update
         public override Task<IEnumerable<ServiceTemplate>> UpdateAsync(IEnumerable<ServiceTemplate> entities)
         {
-           CheckEntity(entities);
+            //Check if update allowed
+            //Timeblock update
+            CheckEntity(entities);
  
             return base.UpdateAsync(entities);
         }
         public override Task<ServiceTemplate> UpdateAsync(ServiceTemplate entity)
         {
+            //Check if update allowed
+            //Timeblock update
             CheckEntity(entity);
             return base.UpdateAsync(entity);
         }
@@ -58,6 +64,9 @@ namespace QTTimeManagement.Logic.Controllers
         #region Delete
         public override Task DeleteAsync(int id)
         {
+            //kann nicht gelöschtweren solage Dienste mit der Vorlage vorhanden sind
+            //und löschen der Timeblöck
+
             return base.DeleteAsync(id);
         }
         #endregion
@@ -65,14 +74,13 @@ namespace QTTimeManagement.Logic.Controllers
         public void CheckEntity(ServiceTemplate entity)
         {
             if (entity == null) throw new ArgumentNullException("ServicesController Null Exception", nameof(entity));
-            if (entity.Name == String.Empty) throw new ArgumentException("ServicesController Service Name ist Leerstring", nameof(entity));
+            if (entity.Name == string.Empty) throw new Modules.Exceptions.LogicException("ServicesController Service Name ist Leerstring", nameof(entity));
         }
         public void CheckEntity(IEnumerable<ServiceTemplate> entities)
         {
-            if (entities == null) throw new ArgumentNullException("ServicesController Null Exception", nameof(entities));
             foreach (var item in entities)
             {
-                if (item.Name == String.Empty) throw new ArgumentException("ServicesController Service Name ist Leerstring", nameof(item));
+                CheckEntity(item);
             }
         }
     }
