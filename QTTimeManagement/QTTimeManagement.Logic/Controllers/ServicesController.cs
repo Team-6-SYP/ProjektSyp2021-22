@@ -30,18 +30,12 @@ namespace QTTimeManagement.Logic.Controllers
         #region Insert
         public override Task<IEnumerable<Service>> InsertAsync(IEnumerable<Service> entities)
         {
-            if (entities == null) throw new ArgumentNullException("InsertAsync Service (null)", nameof(entities));
-            foreach (var item in entities)
-            {
-                if (item.Name == String.Empty) throw new ArgumentException("InsertAsync Service Name ist Leerstring", nameof(item)); 
-                // ServiceDay?  
-            }
+            CheckEntity(entities);
             return base.InsertAsync(entities);
         }
         public override Task<Service> InsertAsync(Service entity)
         {
-            if (entity == null) throw new ArgumentNullException("InsertAsync Service (null)", nameof(entity));
-            if (entity.Name == String.Empty) throw new ArgumentException("InsertAsync Service Name ist Leerstring", nameof(entity));
+            CheckEntity(entity);
 
             return base.InsertAsync(entity);
         }
@@ -50,17 +44,12 @@ namespace QTTimeManagement.Logic.Controllers
         #region Update
         public override Task<IEnumerable<Service>> UpdateAsync(IEnumerable<Service> entities)
         {
-            if (entities == null) throw new ArgumentNullException("UpdateAsync Service (null)", nameof(entities));
-            foreach (var item in entities)
-            {
-                if (item.Name == String.Empty) throw new ArgumentException("UpdateAsync Service Name ist Leerstring", nameof(item));
-            }
+            CheckEntity(entities);
             return base.UpdateAsync(entities);
         }
         public override Task<Service> UpdateAsync(Service entity)
         {
-            if (entity == null) throw new ArgumentNullException("UpdateAsync Service (null)", nameof(entity));
-            if (entity.Name == String.Empty) throw new ArgumentException("UpdateAsync Service Name ist Leerstring", nameof(entity));
+            CheckEntity(entity);
             return base.UpdateAsync(entity);
         }
         #endregion
@@ -71,5 +60,19 @@ namespace QTTimeManagement.Logic.Controllers
             return base.DeleteAsync(id);
         }
         #endregion
+
+        public void CheckEntity(Service entity)
+        {
+            if(entity == null) throw new ArgumentNullException("ServicesController Null Exception",nameof(entity));
+            if (entity.Name == String.Empty) throw new ArgumentException("ServicesController Service Name ist Leerstring", nameof(entity));
+        }
+        public void CheckEntity(IEnumerable<Service> entities)
+        {
+            if(entities == null) throw new ArgumentNullException("ServicesController Null Exception",nameof(entities));
+            foreach (var item in entities)
+            {
+                if(item.Name == String.Empty) throw new ArgumentException("ServicesController Service Name ist Leerstring", nameof(item));
+            }
+        }
     }
 }
