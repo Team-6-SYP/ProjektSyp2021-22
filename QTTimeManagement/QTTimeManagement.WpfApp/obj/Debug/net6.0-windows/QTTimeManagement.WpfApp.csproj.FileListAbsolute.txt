@@ -61,3 +61,12 @@ C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\obj\Debug\net6.0-windows\
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\obj\Debug\net6.0-windows\QTTimeManagement.WpfApp.pdb
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\obj\Debug\net6.0-windows\QTTimeManagement.WpfApp.genruntimeconfig.cache
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\obj\Debug\net6.0-windows\ref\QTTimeManagement.WpfApp.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\Azure.Core.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\Azure.Identity.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\System.Collections.Immutable.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\System.Text.Json.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.WpfApp\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
