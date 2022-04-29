@@ -68,3 +68,14 @@ C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\obj\Debug\net6.0\refint\Q
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\obj\Debug\net6.0\QTTimeManagement.ConApp.pdb
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\obj\Debug\net6.0\QTTimeManagement.ConApp.genruntimeconfig.cache
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\obj\Debug\net6.0\ref\QTTimeManagement.ConApp.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\Azure.Core.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\Azure.Identity.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\System.CodeDom.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\System.Collections.Immutable.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\System.Text.Json.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.ConApp\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

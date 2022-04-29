@@ -149,3 +149,13 @@ C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\obj\Debug\net6.0\
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\obj\Debug\net6.0\QTTimeManagement.Logic.UnitTest.pdb
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\obj\Debug\net6.0\QTTimeManagement.Logic.UnitTest.genruntimeconfig.cache
 C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\obj\Debug\net6.0\ref\QTTimeManagement.Logic.UnitTest.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\Azure.Core.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\Azure.Identity.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\System.Collections.Immutable.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\System.Text.Json.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\SypProjekt\QTTimeManagement\QTTimeManagement.Logic.UnitTest\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
