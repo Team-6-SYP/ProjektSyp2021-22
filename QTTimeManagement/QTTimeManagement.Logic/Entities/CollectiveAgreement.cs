@@ -1,4 +1,5 @@
-﻿using QTTimeManagement.Logic.Interfaces;
+﻿using QTTimeManagement.Logic.Enumerations;
+using QTTimeManagement.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,13 @@ using System.Threading.Tasks;
 namespace QTTimeManagement.Logic.Entities
 {
     [Table("CollectiveAgreements", Schema = "timemanagement")]
+    [Index(nameof(Name), IsUnique = true)]
     public class CollectiveAgreement : ValidityEntity
     {
+        [Required]
+        public string Name { get; set; } = string.Empty;
+
+
         #region nighthours
         public DateTime? NightHoursBegin { get; set; }
 
@@ -30,12 +36,14 @@ namespace QTTimeManagement.Logic.Entities
         Ein Ruhepausenteil von 15 Minuten ist dann unbezahlt, wenn er innerhalb eines Zeitraumes von frühestens 2 Stunden nach Beginn bzw. spätestens 2 Stunden vor Ende des Dienstes liegt.        
         */
 
-        public TimeSpan? MaximumBreakDuration { get; set; }
+        public TimeSpan? MaximumUnpaidBreakDuration { get; set; }
 
         public TimeSpan? MinWorkingTimeAfterBegin { get; set; }
         public TimeSpan? MinWorkingTimeBeforeEnd { get; set; }
-        public TimeSpan? MinTime30MinBreakAfterBegin { get; set; }
-        public TimeSpan? MinTime30MinBreakBeforeEnd { get; set; }
+
+        public TimeSpan? MinGreatBreakDuration { get; set; }
+        public TimeSpan? MinTimeGreatBreakAfterBegin { get; set; }
+        public TimeSpan? MinTimeGreatBreakBeforeEnd { get; set; }
         #endregion
 
         #region rest time
@@ -83,7 +91,7 @@ namespace QTTimeManagement.Logic.Entities
         müssen unbeschadet der Dauer dieser Dienstleistung mindestens 6 Stunden 30 Minuten Arbeitszeit 
         verrechnet werden, wobei Abschnitt V entsprechend zu berücksichtigen ist. 
         */
-        public TimeSpan? MinWorkingTime { get; set; }
+        public TimeSpan? MinOperatingTimeToPay { get; set; }
 
         /*
         Für die Durchführung von Vor- und Abschlussarbeiten im Kraftfahrlinienverkehr ist daher in den Fällen, 
@@ -96,13 +104,26 @@ namespace QTTimeManagement.Logic.Entities
         #endregion
 
         #region overtime
-        public int? OverTimeThresholdWeeklyHours { get; set; }
-        public double? OvertimeSurchargeWeeklyHours { get; set; }
-        public double? OvertimeSurchargeBeforeWeeklyHourThreshold { get; set; }
-        public double? HolidaySurcharge { get; set; }
+        public int OverTimeThresholdWeeklyHours { get; set; }
+        public double OvertimeSurchargeWeeklyHoursInPercent { get; set; }
+        public double OvertimeSurchargeBeforWeeklyHourThresholdInPercent { get; set; }
+        public double HolidaySurchargeInPercent { get; set; }
+        #endregion
 
+        #region diets
+        public int MaxDietPerDay { get; set; }
+        public double DietRatePerDay { get; set; }
+
+        [NotMapped]
+        public double DietRatePerHour => DietRatePerDay / (MaxDietPerDay != 0 ? MaxDietPerDay : 1);
 
         #endregion
 
+
+        //navigation properties
+        //public IEnumerable<Rate> Rates { get; set; } = new List<Rate>();
+
+        //[NotMapped]
+        //public Rate DietRatePerDay => Rates.FirstOrNewInstance(r => r.RateType == RateType.Diet);
     }
 }

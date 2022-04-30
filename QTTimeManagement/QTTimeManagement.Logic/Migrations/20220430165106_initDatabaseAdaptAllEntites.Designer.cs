@@ -12,14 +12,15 @@ using QTTimeManagement.Logic.DataContext;
 namespace QTTimeManagement.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20220419175850_intitDb")]
-    partial class intitDb
+    [Migration("20220430165106_initDatabaseAdaptAllEntites")]
+    partial class initDatabaseAdaptAllEntites
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "7.0.0-preview.3.22175.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -35,25 +36,34 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<DateTime>("Begin")
                         .HasColumnType("datetime2");
 
+                    b.Property<double>("DietRatePerDay")
+                        .HasColumnType("float");
+
                     b.Property<DateTime?>("End")
                         .HasColumnType("datetime2");
 
-                    b.Property<double?>("HolidaySurcharge")
+                    b.Property<double>("HolidaySurchargeInPercent")
                         .HasColumnType("float");
+
+                    b.Property<int>("MaxDietPerDay")
+                        .HasColumnType("int");
 
                     b.Property<TimeSpan?>("MaxOperatingTime")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan?>("MaximumBreakDuration")
+                    b.Property<TimeSpan?>("MaximumUnpaidBreakDuration")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan?>("MinTime30MinBreakAfterBegin")
+                    b.Property<TimeSpan?>("MinGreatBreakDuration")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan?>("MinTime30MinBreakBeforeEnd")
+                    b.Property<TimeSpan?>("MinOperatingTimeToPay")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan?>("MinWorkingTime")
+                    b.Property<TimeSpan?>("MinTimeGreatBreakAfterBegin")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan?>("MinTimeGreatBreakBeforeEnd")
                         .HasColumnType("time");
 
                     b.Property<TimeSpan?>("MinWorkingTimeAfterBegin")
@@ -62,19 +72,23 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<TimeSpan?>("MinWorkingTimeBeforeEnd")
                         .HasColumnType("time");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("NightHoursBegin")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("NightHoursEnd")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("OverTimeThresholdWeeklyHours")
+                    b.Property<int>("OverTimeThresholdWeeklyHours")
                         .HasColumnType("int");
 
-                    b.Property<double?>("OvertimeSurchargeBeforeWeeklyHourThreshold")
+                    b.Property<double>("OvertimeSurchargeBeforWeeklyHourThresholdInPercent")
                         .HasColumnType("float");
 
-                    b.Property<double?>("OvertimeSurchargeWeeklyHours")
+                    b.Property<double>("OvertimeSurchargeWeeklyHoursInPercent")
                         .HasColumnType("float");
 
                     b.Property<TimeSpan?>("PreperationAndPreworkTime")
@@ -86,6 +100,9 @@ namespace QTTimeManagement.Logic.Migrations
                         .HasColumnType("rowversion");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("CollectiveAgreements", "timemanagement");
                 });
@@ -216,10 +233,19 @@ namespace QTTimeManagement.Logic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("ChangesThroughTemplateNotice")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsNotCompliant")
+                    b.Property<bool>("IsCompliant")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSameAsTemplate")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUpdatedThroughTemplate")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -242,7 +268,7 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<DateTime>("ServiceDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ServiceTemplateId")
+                    b.Property<int>("ServiceTemplateId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -301,14 +327,14 @@ namespace QTTimeManagement.Logic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("Begin")
+                    b.Property<DateTime?>("Begin")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("End")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Index")
-                        .HasColumnType("int");
+                    b.Property<bool>("OnCompanyTerrain")
+                        .HasColumnType("bit");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -335,9 +361,11 @@ namespace QTTimeManagement.Logic.Migrations
 
             modelBuilder.Entity("QTTimeManagement.Logic.Entities.Rate", b =>
                 {
-                    b.HasOne("QTTimeManagement.Logic.Entities.Employee", null)
+                    b.HasOne("QTTimeManagement.Logic.Entities.Employee", "Employee")
                         .WithMany("Rates")
                         .HasForeignKey("EmployeeId");
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("QTTimeManagement.Logic.Entities.Service", b =>
@@ -350,7 +378,9 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.HasOne("QTTimeManagement.Logic.Entities.ServiceTemplate", "ServiceTemplate")
                         .WithMany()
-                        .HasForeignKey("ServiceTemplateId");
+                        .HasForeignKey("ServiceTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Employee");
 
@@ -360,11 +390,11 @@ namespace QTTimeManagement.Logic.Migrations
             modelBuilder.Entity("QTTimeManagement.Logic.Entities.TimeBlock", b =>
                 {
                     b.HasOne("QTTimeManagement.Logic.Entities.Service", "Service")
-                        .WithMany()
+                        .WithMany("TimeBlocks")
                         .HasForeignKey("ServiceId");
 
                     b.HasOne("QTTimeManagement.Logic.Entities.ServiceTemplate", "ServiceTemplate")
-                        .WithMany()
+                        .WithMany("TimeBlocks")
                         .HasForeignKey("ServiceTemplateId");
 
                     b.Navigation("Service");
@@ -377,6 +407,16 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Navigation("Rates");
 
                     b.Navigation("Services");
+                });
+
+            modelBuilder.Entity("QTTimeManagement.Logic.Entities.Service", b =>
+                {
+                    b.Navigation("TimeBlocks");
+                });
+
+            modelBuilder.Entity("QTTimeManagement.Logic.Entities.ServiceTemplate", b =>
+                {
+                    b.Navigation("TimeBlocks");
                 });
 #pragma warning restore 612, 618
         }

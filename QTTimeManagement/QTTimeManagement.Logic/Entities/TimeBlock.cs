@@ -22,13 +22,17 @@ namespace QTTimeManagement.Logic.Entities
         [Required]
         public DateTime End { get; set; } //TimeOnly
 
+        [Required]
+        public bool OnCompanyTerrain { get; set; } //for diet clculation
+
+        //calculated properties
         [NotMapped]
         public TimeOnly BeginTimeOnly => Begin == null ? new TimeOnly() : TimeOnly.FromDateTime(Begin.Value);
 
         [NotMapped]
         public TimeOnly EndTimeOnly => TimeOnly.FromDateTime(End);
 
-        //navigation Properties
+        //navigation properties
         public Service? Service { get; set; }
         public ServiceTemplate? ServiceTemplate { get; set; }
 

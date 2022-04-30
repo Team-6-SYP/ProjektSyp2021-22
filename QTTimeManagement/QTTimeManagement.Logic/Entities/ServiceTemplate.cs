@@ -26,6 +26,7 @@ namespace QTTimeManagement.Logic.Entities
         //navigation properties
         public IEnumerable<TimeBlock> TimeBlocks { get; set; } = new List<TimeBlock>();
 
+        [NotMapped]
         public IEnumerable<TimeBlock> Preperations => TimeBlocks.Where(t => t.TimeType == TimeType.Preperation);
 
     }

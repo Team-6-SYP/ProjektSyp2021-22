@@ -12,6 +12,6 @@ namespace QTTimeManagement.Logic.Enumerations
         Vacation,
         Sickleave,
         VacationDaysPerMonth,
-        PerDiem
+        //Diet
     }
 }

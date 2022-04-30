@@ -74,7 +74,7 @@ namespace QTTimeManagement.Logic.Controllers
         public void CheckEntity(ServiceTemplate entity)
         {
             if (entity == null) throw new ArgumentNullException("ServicesController Null Exception", nameof(entity));
-            if (entity.Name == string.Empty) throw new Modules.Exceptions.LogicException("ServicesController Service Name ist Leerstring", nameof(entity));
+            if (entity.Name == string.Empty) throw new Modules.Exceptions.LogicException("ServicesController Service Name ist Leerstring");
         }
         public void CheckEntity(IEnumerable<ServiceTemplate> entities)
         {

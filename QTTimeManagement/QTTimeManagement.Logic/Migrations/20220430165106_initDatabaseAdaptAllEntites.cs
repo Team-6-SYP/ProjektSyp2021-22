@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QTTimeManagement.Logic.Migrations
 {
-    public partial class intitDb : Migration
+    /// <inheritdoc />
+    public partial class initDatabaseAdaptAllEntites : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
@@ -19,20 +21,24 @@ namespace QTTimeManagement.Logic.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     NightHoursBegin = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NightHoursEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MaximumBreakDuration = table.Column<TimeSpan>(type: "time", nullable: true),
+                    MaximumUnpaidBreakDuration = table.Column<TimeSpan>(type: "time", nullable: true),
                     MinWorkingTimeAfterBegin = table.Column<TimeSpan>(type: "time", nullable: true),
                     MinWorkingTimeBeforeEnd = table.Column<TimeSpan>(type: "time", nullable: true),
-                    MinTime30MinBreakAfterBegin = table.Column<TimeSpan>(type: "time", nullable: true),
-                    MinTime30MinBreakBeforeEnd = table.Column<TimeSpan>(type: "time", nullable: true),
+                    MinGreatBreakDuration = table.Column<TimeSpan>(type: "time", nullable: true),
+                    MinTimeGreatBreakAfterBegin = table.Column<TimeSpan>(type: "time", nullable: true),
+                    MinTimeGreatBreakBeforeEnd = table.Column<TimeSpan>(type: "time", nullable: true),
                     MaxOperatingTime = table.Column<TimeSpan>(type: "time", nullable: true),
-                    MinWorkingTime = table.Column<TimeSpan>(type: "time", nullable: true),
+                    MinOperatingTimeToPay = table.Column<TimeSpan>(type: "time", nullable: true),
                     PreperationAndPreworkTime = table.Column<TimeSpan>(type: "time", nullable: true),
-                    OverTimeThresholdWeeklyHours = table.Column<int>(type: "int", nullable: true),
-                    OvertimeSurchargeWeeklyHours = table.Column<double>(type: "float", nullable: true),
-                    OvertimeSurchargeBeforeWeeklyHourThreshold = table.Column<double>(type: "float", nullable: true),
-                    HolidaySurcharge = table.Column<double>(type: "float", nullable: true),
+                    OverTimeThresholdWeeklyHours = table.Column<int>(type: "int", nullable: false),
+                    OvertimeSurchargeWeeklyHoursInPercent = table.Column<double>(type: "float", nullable: false),
+                    OvertimeSurchargeBeforWeeklyHourThresholdInPercent = table.Column<double>(type: "float", nullable: false),
+                    HolidaySurchargeInPercent = table.Column<double>(type: "float", nullable: false),
+                    MaxDietPerDay = table.Column<int>(type: "int", nullable: false),
+                    DietRatePerDay = table.Column<double>(type: "float", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
                     Begin = table.Column<DateTime>(type: "datetime2", nullable: false),
                     End = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -136,10 +142,13 @@ namespace QTTimeManagement.Logic.Migrations
                     Name = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     ServiceDay = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsNotCompliant = table.Column<bool>(type: "bit", nullable: false),
-                    NotCompliantNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
-                    ServiceTemplateId = table.Column<int>(type: "int", nullable: true),
+                    ServiceTemplateId = table.Column<int>(type: "int", nullable: false),
+                    IsSameAsTemplate = table.Column<bool>(type: "bit", nullable: false),
+                    IsCompliant = table.Column<bool>(type: "bit", nullable: false),
+                    NotCompliantNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsUpdatedThroughTemplate = table.Column<bool>(type: "bit", nullable: false),
+                    ChangesThroughTemplateNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
@@ -157,7 +166,8 @@ namespace QTTimeManagement.Logic.Migrations
                         column: x => x.ServiceTemplateId,
                         principalSchema: "timemanagement",
                         principalTable: "ServiceTemplates",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,9 +180,9 @@ namespace QTTimeManagement.Logic.Migrations
                     ServiceId = table.Column<int>(type: "int", nullable: true),
                     ServiceTemplateId = table.Column<int>(type: "int", nullable: true),
                     TimeType = table.Column<int>(type: "int", nullable: false),
-                    Begin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Begin = table.Column<DateTime>(type: "datetime2", nullable: true),
                     End = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Index = table.Column<int>(type: "int", nullable: false),
+                    OnCompanyTerrain = table.Column<bool>(type: "bit", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
@@ -191,6 +201,13 @@ namespace QTTimeManagement.Logic.Migrations
                         principalTable: "ServiceTemplates",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CollectiveAgreements_Name",
+                schema: "timemanagement",
+                table: "CollectiveAgreements",
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_Email",
@@ -237,6 +254,7 @@ namespace QTTimeManagement.Logic.Migrations
                 column: "ServiceTemplateId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

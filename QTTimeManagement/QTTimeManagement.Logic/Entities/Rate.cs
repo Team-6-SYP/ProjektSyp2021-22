@@ -11,21 +11,16 @@ namespace QTTimeManagement.Logic.Entities
     [Table("Rates", Schema = "timemanagement")]
     public class Rate : ValidityEntity, IRateable
     {
-        private double rateAmount;
-
         [Required]
         public RateType RateType { get; set; }
 
         [Required]
-        public double RateAmount
-        {
-            get => rateAmount; set
-            {
-                if (value < 0)
-                    throw new Logic.Modules.Exceptions.LogicException("Rate has to be a positiv value");
+        public double RateAmount { get; set; }
 
-                rateAmount = value;
-            }
-        }
+        public int? EmployeeId { get; set; } 
+
+        //navigation properties
+        public Employee? Employee { get; set; }
+
     }
 }

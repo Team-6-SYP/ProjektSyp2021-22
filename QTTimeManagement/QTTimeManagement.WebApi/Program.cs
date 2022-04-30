@@ -7,6 +7,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add transient Controllers
+builder.Services.AddTransient<QTTimeManagement.Logic.Controllers.CollectiveAgreementsController>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

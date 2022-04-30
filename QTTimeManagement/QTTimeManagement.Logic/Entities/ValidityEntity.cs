@@ -13,5 +13,10 @@ namespace QTTimeManagement.Logic.Entities
         public DateTime Begin { get; set; }
 
         public DateTime? End { get; set; }
+
+        [NotMapped]
+        public DateOnly BeginDateOnly => DateOnly.FromDateTime(Begin);
+        [NotMapped]
+        public DateOnly? EndDateOnly => End != null ? DateOnly.FromDateTime(End.Value) : null;
     }
 }
