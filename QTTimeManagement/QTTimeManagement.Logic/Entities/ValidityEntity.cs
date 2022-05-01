@@ -7,16 +7,21 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Entities
 {
-    public class ValidityEntity : VersionEntity, IValidityable
+    [Index(nameof(Begin))]
+    public abstract class ValidityEntity<T> : VersionEntity, IValidityable<T>
     {
         [Required]
         public DateTime Begin { get; set; }
 
-        public DateTime? End { get; set; }
+        public DateTime? End { get; internal set; }
 
         [NotMapped]
         public DateOnly BeginDateOnly => DateOnly.FromDateTime(Begin);
+
         [NotMapped]
         public DateOnly? EndDateOnly => End != null ? DateOnly.FromDateTime(End.Value) : null;
+
+        [NotMapped]
+        public abstract Predicate<T> VadilityPredicate { get; init; }
     }
 }

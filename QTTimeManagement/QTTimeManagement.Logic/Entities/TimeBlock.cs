@@ -25,6 +25,9 @@ namespace QTTimeManagement.Logic.Entities
         [Required]
         public bool OnCompanyTerrain { get; set; } //for diet clculation
 
+        [MaxLength(2000)]
+        public string? Notice { get; set; }
+
         //calculated properties
         [NotMapped]
         public TimeOnly BeginTimeOnly => Begin == null ? new TimeOnly() : TimeOnly.FromDateTime(Begin.Value);

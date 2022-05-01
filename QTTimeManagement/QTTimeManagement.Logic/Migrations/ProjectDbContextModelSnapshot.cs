@@ -42,7 +42,7 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<double>("HolidaySurchargeInPercent")
                         .HasColumnType("float");
 
-                    b.Property<int>("MaxDietPerDay")
+                    b.Property<int>("MaxDietsPerDay")
                         .HasColumnType("int");
 
                     b.Property<TimeSpan?>("MaxOperatingTime")
@@ -98,7 +98,12 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Begin");
+
                     b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.HasIndex("Begin", "Name")
                         .IsUnique();
 
                     b.ToTable("CollectiveAgreements", "timemanagement");
@@ -198,7 +203,7 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<DateTime>("Begin")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EmployeeId")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("End")
@@ -217,7 +222,12 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Begin");
+
                     b.HasIndex("EmployeeId");
+
+                    b.HasIndex("Begin", "RateType", "EmployeeId")
+                        .IsUnique();
 
                     b.ToTable("Rates", "timemanagement");
                 });
@@ -232,6 +242,12 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.Property<string>("ChangesThroughTemplateNotice")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CollectivAgreementId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CollectiveAgreementId")
+                        .HasColumnType("int");
 
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
@@ -269,6 +285,8 @@ namespace QTTimeManagement.Logic.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CollectiveAgreementId");
 
                     b.HasIndex("EmployeeId");
 
@@ -310,6 +328,8 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Begin");
+
                     b.HasIndex("Name", "Begin")
                         .IsUnique();
 
@@ -329,6 +349,10 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.Property<DateTime>("End")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Notice")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
 
                     b.Property<bool>("OnCompanyTerrain")
                         .HasColumnType("bit");
@@ -360,13 +384,19 @@ namespace QTTimeManagement.Logic.Migrations
                 {
                     b.HasOne("QTTimeManagement.Logic.Entities.Employee", "Employee")
                         .WithMany("Rates")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("QTTimeManagement.Logic.Entities.Service", b =>
                 {
+                    b.HasOne("QTTimeManagement.Logic.Entities.CollectiveAgreement", "CollectiveAgreement")
+                        .WithMany("Services")
+                        .HasForeignKey("CollectiveAgreementId");
+
                     b.HasOne("QTTimeManagement.Logic.Entities.Employee", "Employee")
                         .WithMany("Services")
                         .HasForeignKey("EmployeeId")
@@ -374,10 +404,12 @@ namespace QTTimeManagement.Logic.Migrations
                         .IsRequired();
 
                     b.HasOne("QTTimeManagement.Logic.Entities.ServiceTemplate", "ServiceTemplate")
-                        .WithMany()
+                        .WithMany("Services")
                         .HasForeignKey("ServiceTemplateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CollectiveAgreement");
 
                     b.Navigation("Employee");
 
@@ -399,6 +431,11 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Navigation("ServiceTemplate");
                 });
 
+            modelBuilder.Entity("QTTimeManagement.Logic.Entities.CollectiveAgreement", b =>
+                {
+                    b.Navigation("Services");
+                });
+
             modelBuilder.Entity("QTTimeManagement.Logic.Entities.Employee", b =>
                 {
                     b.Navigation("Rates");
@@ -413,6 +450,8 @@ namespace QTTimeManagement.Logic.Migrations
 
             modelBuilder.Entity("QTTimeManagement.Logic.Entities.ServiceTemplate", b =>
                 {
+                    b.Navigation("Services");
+
                     b.Navigation("TimeBlocks");
                 });
 #pragma warning restore 612, 618

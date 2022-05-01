@@ -27,15 +27,18 @@ namespace QTTimeManagement.Logic.Entities
         [Required]
         public int ServiceTemplateId { get; set; }
 
-        public bool IsSameAsTemplate { get; set; } = true;
+        public bool IsSameAsTemplate { get; internal set; } = true;
 
         //CollectiveAgreementControllerCheck
-        public bool IsCompliant { get; set; } = true;
-        public string? NotCompliantNotice { get; set; }
+        public bool IsCompliant { get; internal set; } = true;
+        
+        public string? NotCompliantNotice { get; internal set; } //No limit --> should never be deleted
+
+        public int? CollectivAgreementId { get; internal set; }
 
         //Updated though Templete
-        public bool IsUpdatedThroughTemplate { get; set; }
-        public string? ChangesThroughTemplateNotice { get; set; }
+        public bool IsUpdatedThroughTemplate { get; internal set; }
+        public string? ChangesThroughTemplateNotice { get; internal set; }
 
         //calculated properties
         [NotMapped]
@@ -55,6 +58,7 @@ namespace QTTimeManagement.Logic.Entities
         public Employee? Employee { get; set; }
         public ServiceTemplate? ServiceTemplate { get; set; }
         public IEnumerable<TimeBlock> TimeBlocks { get; set; } = new List<TimeBlock>();
+        public CollectiveAgreement? CollectiveAgreement { get; set; }
 
         //Kommentar
     }

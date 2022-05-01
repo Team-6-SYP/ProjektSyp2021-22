@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QTTimeManagement.Logic.Migrations
 {
     /// <inheritdoc />
-    public partial class initDatabaseAdaptAllEntites : Migration
+    public partial class intiDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,7 +37,7 @@ namespace QTTimeManagement.Logic.Migrations
                     OvertimeSurchargeWeeklyHoursInPercent = table.Column<double>(type: "float", nullable: false),
                     OvertimeSurchargeBeforWeeklyHourThresholdInPercent = table.Column<double>(type: "float", nullable: false),
                     HolidaySurchargeInPercent = table.Column<double>(type: "float", nullable: false),
-                    MaxDietPerDay = table.Column<int>(type: "int", nullable: false),
+                    MaxDietsPerDay = table.Column<int>(type: "int", nullable: false),
                     DietRatePerDay = table.Column<double>(type: "float", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
                     Begin = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -116,7 +116,7 @@ namespace QTTimeManagement.Logic.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RateType = table.Column<int>(type: "int", nullable: false),
                     RateAmount = table.Column<double>(type: "float", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: true),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
                     Begin = table.Column<DateTime>(type: "datetime2", nullable: false),
                     End = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -129,7 +129,8 @@ namespace QTTimeManagement.Logic.Migrations
                         column: x => x.EmployeeId,
                         principalSchema: "timemanagement",
                         principalTable: "Employees",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -147,13 +148,21 @@ namespace QTTimeManagement.Logic.Migrations
                     IsSameAsTemplate = table.Column<bool>(type: "bit", nullable: false),
                     IsCompliant = table.Column<bool>(type: "bit", nullable: false),
                     NotCompliantNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CollectivAgreementId = table.Column<int>(type: "int", nullable: true),
                     IsUpdatedThroughTemplate = table.Column<bool>(type: "bit", nullable: false),
                     ChangesThroughTemplateNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CollectiveAgreementId = table.Column<int>(type: "int", nullable: true),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Services_CollectiveAgreements_CollectiveAgreementId",
+                        column: x => x.CollectiveAgreementId,
+                        principalSchema: "timemanagement",
+                        principalTable: "CollectiveAgreements",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Services_Employees_EmployeeId",
                         column: x => x.EmployeeId,
@@ -183,6 +192,7 @@ namespace QTTimeManagement.Logic.Migrations
                     Begin = table.Column<DateTime>(type: "datetime2", nullable: true),
                     End = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OnCompanyTerrain = table.Column<bool>(type: "bit", nullable: false),
+                    Notice = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
@@ -203,6 +213,19 @@ namespace QTTimeManagement.Logic.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_CollectiveAgreements_Begin",
+                schema: "timemanagement",
+                table: "CollectiveAgreements",
+                column: "Begin");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CollectiveAgreements_Begin_Name",
+                schema: "timemanagement",
+                table: "CollectiveAgreements",
+                columns: new[] { "Begin", "Name" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CollectiveAgreements_Name",
                 schema: "timemanagement",
                 table: "CollectiveAgreements",
@@ -217,10 +240,29 @@ namespace QTTimeManagement.Logic.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Rates_Begin",
+                schema: "timemanagement",
+                table: "Rates",
+                column: "Begin");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rates_Begin_RateType_EmployeeId",
+                schema: "timemanagement",
+                table: "Rates",
+                columns: new[] { "Begin", "RateType", "EmployeeId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Rates_EmployeeId",
                 schema: "timemanagement",
                 table: "Rates",
                 column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Services_CollectiveAgreementId",
+                schema: "timemanagement",
+                table: "Services",
+                column: "CollectiveAgreementId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Services_EmployeeId",
@@ -233,6 +275,12 @@ namespace QTTimeManagement.Logic.Migrations
                 schema: "timemanagement",
                 table: "Services",
                 column: "ServiceTemplateId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ServiceTemplates_Begin",
+                schema: "timemanagement",
+                table: "ServiceTemplates",
+                column: "Begin");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ServiceTemplates_Name_Begin",
@@ -258,10 +306,6 @@ namespace QTTimeManagement.Logic.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CollectiveAgreements",
-                schema: "timemanagement");
-
-            migrationBuilder.DropTable(
                 name: "Holidays",
                 schema: "timemanagement");
 
@@ -275,6 +319,10 @@ namespace QTTimeManagement.Logic.Migrations
 
             migrationBuilder.DropTable(
                 name: "Services",
+                schema: "timemanagement");
+
+            migrationBuilder.DropTable(
+                name: "CollectiveAgreements",
                 schema: "timemanagement");
 
             migrationBuilder.DropTable(

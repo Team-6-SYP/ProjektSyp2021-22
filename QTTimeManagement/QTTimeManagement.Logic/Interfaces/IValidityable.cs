@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Interfaces
 {
-    public interface IValidityable
+    public interface IValidityable<T>
     {
         public DateTime Begin { get; set; }
-        public DateTime? End { get; set; }
+        public DateTime? End { get; }
+        public Predicate<T> VadilityPredicate { get; init; }
     }
 }

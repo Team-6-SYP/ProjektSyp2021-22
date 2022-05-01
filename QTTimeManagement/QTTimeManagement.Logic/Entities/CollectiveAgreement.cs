@@ -10,11 +10,14 @@ namespace QTTimeManagement.Logic.Entities
 {
     [Table("CollectiveAgreements", Schema = "timemanagement")]
     [Index(nameof(Name), IsUnique = true)]
-    public class CollectiveAgreement : ValidityEntity
+    [Index(nameof(Begin), nameof(Name), IsUnique = true)]
+    public class CollectiveAgreement : ValidityEntity<CollectiveAgreement>
     {
         [Required]
         public string Name { get; set; } = string.Empty;
 
+        [NotMapped]
+        public override Predicate<CollectiveAgreement> VadilityPredicate { get; init; } = (ca) => true;
 
         #region nighthours
         public DateTime? NightHoursBegin { get; set; }
@@ -111,19 +114,22 @@ namespace QTTimeManagement.Logic.Entities
         #endregion
 
         #region diets
-        public int MaxDietPerDay { get; set; }
+        public int MaxDietsPerDay { get; set; }
         public double DietRatePerDay { get; set; }
 
         [NotMapped]
-        public double DietRatePerHour => DietRatePerDay / (MaxDietPerDay != 0 ? MaxDietPerDay : 1);
+        public double DietRatePerHour => DietRatePerDay / (MaxDietsPerDay != 0 ? MaxDietsPerDay : 1);
+
 
         #endregion
 
-
         //navigation properties
+        public IEnumerable<Service> Services { get; set; } = new List<Service>();
+
         //public IEnumerable<Rate> Rates { get; set; } = new List<Rate>();
 
         //[NotMapped]
         //public Rate DietRatePerDay => Rates.FirstOrNewInstance(r => r.RateType == RateType.Diet);
+
     }
 }

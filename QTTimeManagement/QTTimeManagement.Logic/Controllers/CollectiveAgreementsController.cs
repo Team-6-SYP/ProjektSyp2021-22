@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Controllers
 {
-    public sealed class CollectiveAgreementsController : GenericController<CollectiveAgreement>
+    public sealed class CollectiveAgreementsController : GenericValidityController<CollectiveAgreement>
     {
         private static TimeSpan OneDay => new TimeSpan(24, 0, 0);
 
@@ -42,7 +42,7 @@ namespace QTTimeManagement.Logic.Controllers
             //public int MaxDietPerDay { get; set; }
             //public double DietRatePerDay { get; set; }
 
-            if (collectiveAgreement.MaxDietPerDay < 0)
+            if (collectiveAgreement.MaxDietsPerDay < 0)
                 ThrowLogicException("Maximale Anzahl von Diäten pro Tag muss größer gleich 0 sein");
 
             if (collectiveAgreement.DietRatePerDay < 0)
@@ -190,6 +190,8 @@ namespace QTTimeManagement.Logic.Controllers
             {
                 ValidateCollectivAgreement(entity);
             }
+
+            base.BeforeActionExecute(actionType, entity);
         }
         #endregion
 
@@ -197,8 +199,11 @@ namespace QTTimeManagement.Logic.Controllers
         public async Task<bool> CheckServiceAsync(Service service)
         {
             //Valitation prüfen --> mit null aufpassen
-            var colAgr = await EntitySet.FirstOrDefaultAsync(ca => ca.Begin <= service.ServiceDay &&
-                                                             ca.End >= service.ServiceDay);
+            var colAgr = await EntitySet.OrderBy(ca => ca.Begin)
+                                        .LastOrDefaultAsync(ca => ca.Begin <= service.ServiceDay && 
+                                                                 (ca.End != null ? ca.End >= service.ServiceDay : true));
+
+            
 
 
             return service.IsCompliant;

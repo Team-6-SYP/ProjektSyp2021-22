@@ -26,11 +26,10 @@ namespace QTTimeManagement.ConApp
 
             //Console.WriteLine(new DateTime());
 
-            var ca = new CollectiveAgreement()
+            var ca1 = new CollectiveAgreement()
             {
-                Name = "Test3",
+                Name = "Test1",
                 Begin = DateTime.Now,
-                End = DateTime.Now.AddDays(1),
                 NightHoursBegin = DateTime.Now,
                 NightHoursEnd = DateTime.Now.AddHours(4),
                 MaximumUnpaidBreakDuration = new TimeSpan(1, 30, 0),
@@ -46,13 +45,27 @@ namespace QTTimeManagement.ConApp
                 OvertimeSurchargeWeeklyHoursInPercent = 50,
                 OverTimeThresholdWeeklyHours = 40,
                 PreperationAndPreworkTime = new TimeSpan(0, 25, 0),
+                DietRatePerDay = 24,
+                MaxDietsPerDay = 12
             };
+
+            var ca2 = new CollectiveAgreement();
+            ca2.CopyFrom(ca1);
+            ca2.Name = "Test2";
+            ca2.Begin = DateTime.Now.AddDays(1);
+
+            var ca3 = new CollectiveAgreement();
+            ca3.CopyFrom(ca1);
+            ca3.Name = "Test3";
+            ca3.Begin = DateTime.Now.AddDays(4);
 
             using var ctrl = new Logic.Controllers.CollectiveAgreementsController();
 
             Task.Run(async () =>
             {
-                await ctrl.InsertAsync(ca);
+                await ctrl.InsertAsync(ca1);
+                await ctrl.InsertAsync(ca3);
+                await ctrl.InsertAsync(ca2);
                 await ctrl.SaveChangesAsync();
             }).Wait();
 

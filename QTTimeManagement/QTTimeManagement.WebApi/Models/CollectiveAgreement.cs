@@ -38,7 +38,7 @@
         #endregion
 
         #region diets
-        public int MaxDietPerDay { get; set; }
+        public int MaxDietsPerDay { get; set; }
         public double DietRatePerDay { get; set; }
         #endregion
     }

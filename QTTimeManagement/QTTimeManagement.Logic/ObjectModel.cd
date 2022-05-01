@@ -1,21 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="QTTimeManagement.Logic.Entities.CollectiveAgreement" Collapsed="true">
-    <Position X="4" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="3.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAgAAAA=</HashCode>
+      <HashCode>oAAAAAEAEAEgAEAAAACAgCQCAIoAACAAIAAIAAgAACA=</HashCode>
       <FileName>Entities\CollectiveAgreement.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Services" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="QTTimeManagement.Logic.Entities.Employee" Collapsed="true">
-    <Position X="8" Y="4.75" Width="1.5" />
+    <Position X="5.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAAgAAACAAAAACgAAABAACQAAAAAAAA=</HashCode>
+      <HashCode>gAAAAgAAAAAAAAAgAAACAAAAACgAAABAACQAAAAAAAA=</HashCode>
       <FileName>Entities\Employee.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Rates" />
+      <Property Name="Services" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="QTTimeManagement.Logic.Entities.IdentityEntity" Collapsed="true">
-    <Position X="2" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\IdentityEntity.cs</FileName>
@@ -23,55 +30,79 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="QTTimeManagement.Logic.Entities.Person" Collapsed="true">
-    <Position X="8" Y="3.5" Width="1.5" />
+    <Position X="5.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAACAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Entities\Person.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="QTTimeManagement.Logic.Entities.Rate" Collapsed="true">
-    <Position X="6" Y="4.75" Width="1.5" />
+    <Position X="7.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAACAAAAAAAACAAACAAAAAAAAAACAAA=</HashCode>
       <FileName>Entities\Rate.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Employee" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="QTTimeManagement.Logic.Entities.Service" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="6" Width="2.25" />
+    <AssociationLine Name="Employee" Type="QTTimeManagement.Logic.Entities.Employee">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.102" Y="0.511" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAgAAgAAIAAAAIAAAAAAAQACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAgCCAAAACIEABAEAgQgCAAAAAAAEAIAgAACAAQ=</HashCode>
       <FileName>Entities\Service.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ServiceTemplate" />
+      <Property Name="CollectiveAgreement" />
+      <Property Name="Employee" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="TimeBlocks" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="QTTimeManagement.Logic.Entities.ServiceTemplate" Collapsed="true">
-    <Position X="0.5" Y="5.75" Width="1.5" />
+    <Position X="3.25" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAIAAAAIAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAAgAAAAAAAgAAIAAAAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Entities\ServiceTemplate.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="TimeBlocks" />
+      <Property Name="Services" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="QTTimeManagement.Logic.Entities.TimeBlock" Collapsed="true">
-    <Position X="2.25" Y="5.75" Width="1.5" />
+    <Position X="2" Y="7.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAIAAAAAAAgAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAACAIAAAAAAIEAAAAAACBAAAAUAAAAAAAAAAABIA=</HashCode>
       <FileName>Entities\TimeBlock.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="QTTimeManagement.Logic.Entities.ValidityEntity" Collapsed="true">
-    <Position X="2" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\ValidityEntity.cs</FileName>
-    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Service" />
+      <Property Name="ServiceTemplate" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="QTTimeManagement.Logic.Entities.VersionEntity" Collapsed="true">
-    <Position X="2" Y="1.5" Width="1.5" />
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\VersionEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="QTTimeManagement.Logic.Entities.ValidityEntity&lt;T&gt;" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAgAAAAAAAAAAAAAAAIEAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Entities\ValidityEntity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -83,23 +114,23 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="QTTimeManagement.Logic.Interfaces.ITimeable" Collapsed="true">
-    <Position X="10" Y="5" Width="1.5" />
+    <Position X="10" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAIAAACAAAgAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAIAAACAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ITimeable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="QTTimeManagement.Logic.Interfaces.IValidityable" Collapsed="true">
-    <Position X="10" Y="4.25" Width="1.5" />
+  <Interface Name="QTTimeManagement.Logic.Interfaces.IValidityable&lt;T&gt;" Collapsed="true">
+    <Position X="10" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAgAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IValidityable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="QTTimeManagement.Logic.Enumerations.RateType" Collapsed="true">
     <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAQQA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAQQA=</HashCode>
       <FileName>Enumerations\RateType.cs</FileName>
     </TypeIdentifier>
   </Enum>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Interfaces
 {
-    public interface IRateable : IValidityable
+    public interface IRateable
     {
         public RateType RateType { get; set; }
         public double RateAmount { get; set; }

@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 namespace QTTimeManagement.Logic.Entities
 {
     [Table("Rates", Schema = "timemanagement")]
-    public class Rate : ValidityEntity, IRateable
+    [Index(nameof(Begin), nameof(RateType), nameof(EmployeeId), IsUnique = true)]
+    public class Rate : ValidityEntity<Rate>, IRateable
     {
         [Required]
         public RateType RateType { get; set; }
@@ -17,10 +18,17 @@ namespace QTTimeManagement.Logic.Entities
         [Required]
         public double RateAmount { get; set; }
 
-        public int? EmployeeId { get; set; } 
+        public int EmployeeId { get; set; } 
 
         //navigation properties
         public Employee? Employee { get; set; }
 
+        [NotMapped]
+        public override Predicate<Rate> VadilityPredicate { get; init; }
+
+        public Rate()
+        {
+            VadilityPredicate = (r) => r.RateType == RateType && r.EmployeeId == r.EmployeeId;
+        }
     }
 }
