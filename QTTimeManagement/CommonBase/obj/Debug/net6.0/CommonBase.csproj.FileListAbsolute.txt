@@ -10,3 +10,15 @@ C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.dll
 C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\refint\CommonBase.dll
 C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.pdb
 C:\SypProjekt\QTTimeManagement\CommonBase\obj\Debug\net6.0\ref\CommonBase.dll
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\bin\Debug\net6.0\CommonBase.deps.json
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\bin\Debug\net6.0\CommonBase.dll
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\bin\Debug\net6.0\CommonBase.pdb
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.csproj.AssemblyReference.cache
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.AssemblyInfoInputs.cache
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.AssemblyInfo.cs
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.csproj.CoreCompileInputs.cache
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.dll
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\refint\CommonBase.dll
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\CommonBase.pdb
+C:\Users\Knabb\Source\Repos\ProjektSyp2021-22\QTTimeManagement\CommonBase\obj\Debug\net6.0\ref\CommonBase.dll

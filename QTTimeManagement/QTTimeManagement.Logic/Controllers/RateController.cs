@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Controllers
 {
-    public class RateController : GenericController<Rate>
+    public sealed class RateController : GenericController<Rate>
     {
+
+        #region Contructor
         public RateController()
         {
         }
@@ -16,8 +18,41 @@ namespace QTTimeManagement.Logic.Controllers
         public RateController(ControllerObject other) : base(other)
         {
         }
+        #endregion #region Contructor
 
 
+        #region Basic GRUD 
+
+        #region Get
+        public override Task<Rate[]> GetAllAsync()
+        {
+            return base.GetAllAsync();
+        }
+
+        public override ValueTask<Rate?> GetByIdAsync(int id)
+        {
+            return base.GetByIdAsync(id);
+        }
+        #endregion Get
+
+        #region Insert
+        public override Task<IEnumerable<Rate>> InsertAsync(IEnumerable<Rate> entities)
+        {
+            foreach (var entity in entities)
+            {
+                CheckEntity(entity);
+            }
+            return base.InsertAsync(entities);
+        }
+
+        public override Task<Rate> InsertAsync(Rate entity)
+        {
+            CheckEntity(entity);
+            return base.InsertAsync(entity);
+        }
+        #endregion Insert
+
+        #region Update
         public override Task<Rate> UpdateAsync(Rate entity)
         {
             CheckEntity(entity);
@@ -34,21 +69,19 @@ namespace QTTimeManagement.Logic.Controllers
 
             return base.UpdateAsync(entities);
         }
+        #endregion Update
 
-        public override Task<IEnumerable<Rate>> InsertAsync(IEnumerable<Rate> entities)
+        #region Delete
+        public override Task DeleteAsync(int id)
         {
-            foreach (var entity in entities)
-            {
-                CheckEntity(entity);
-            }
-            return base.InsertAsync(entities);
+            return base.DeleteAsync(id);
         }
+        #endregion Delete
 
-        public override Task<Rate> InsertAsync(Rate entity)
-        {
-            CheckEntity(entity);
-            return base.InsertAsync(entity);
-        }
+        #endregion Basic GRUD
+
+
+        #region Entity Check
 
         private void CheckEntity(Rate entity)
         {
@@ -57,5 +90,7 @@ namespace QTTimeManagement.Logic.Controllers
 
 
         }
+
+        #endregion Entity Check
     }
 }
