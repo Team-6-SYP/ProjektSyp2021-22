@@ -42,6 +42,9 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<double>("HolidaySurchargeInPercent")
                         .HasColumnType("float");
 
+                    b.Property<DateTime>("LastModified")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("MaxDietsPerDay")
                         .HasColumnType("int");
 
@@ -242,9 +245,6 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.Property<string>("ChangesThroughTemplateNotice")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CollectivAgreementId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("CollectiveAgreementId")
                         .HasColumnType("int");

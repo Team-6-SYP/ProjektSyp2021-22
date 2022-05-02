@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QTTimeManagement.Logic.Migrations
 {
     /// <inheritdoc />
-    public partial class intiDb : Migration
+    public partial class initdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +22,7 @@ namespace QTTimeManagement.Logic.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NightHoursBegin = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NightHoursEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MaximumUnpaidBreakDuration = table.Column<TimeSpan>(type: "time", nullable: true),
@@ -148,10 +149,9 @@ namespace QTTimeManagement.Logic.Migrations
                     IsSameAsTemplate = table.Column<bool>(type: "bit", nullable: false),
                     IsCompliant = table.Column<bool>(type: "bit", nullable: false),
                     NotCompliantNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CollectivAgreementId = table.Column<int>(type: "int", nullable: true),
+                    CollectiveAgreementId = table.Column<int>(type: "int", nullable: true),
                     IsUpdatedThroughTemplate = table.Column<bool>(type: "bit", nullable: false),
                     ChangesThroughTemplateNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CollectiveAgreementId = table.Column<int>(type: "int", nullable: true),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>

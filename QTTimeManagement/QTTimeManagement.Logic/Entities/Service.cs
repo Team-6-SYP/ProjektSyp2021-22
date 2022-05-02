@@ -34,7 +34,7 @@ namespace QTTimeManagement.Logic.Entities
         
         public string? NotCompliantNotice { get; internal set; } //No limit --> should never be deleted
 
-        public int? CollectivAgreementId { get; internal set; }
+        public int? CollectiveAgreementId { get; internal set; }
 
         //Updated though Templete
         public bool IsUpdatedThroughTemplate { get; internal set; }

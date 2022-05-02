@@ -12,8 +12,8 @@ using QTTimeManagement.Logic.DataContext;
 namespace QTTimeManagement.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20220501052402_intiDb")]
-    partial class intiDb
+    [Migration("20220501174735_initdb")]
+    partial class initdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,9 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.Property<double>("HolidaySurchargeInPercent")
                         .HasColumnType("float");
+
+                    b.Property<DateTime>("LastModified")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("MaxDietsPerDay")
                         .HasColumnType("int");
@@ -245,9 +248,6 @@ namespace QTTimeManagement.Logic.Migrations
 
                     b.Property<string>("ChangesThroughTemplateNotice")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CollectivAgreementId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("CollectiveAgreementId")
                         .HasColumnType("int");

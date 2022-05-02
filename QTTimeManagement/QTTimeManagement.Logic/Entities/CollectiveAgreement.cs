@@ -16,6 +16,9 @@ namespace QTTimeManagement.Logic.Entities
         [Required]
         public string Name { get; set; } = string.Empty;
 
+        [Required]
+        public DateTime LastModified { get; set; }
+
         [NotMapped]
         public override Predicate<CollectiveAgreement> VadilityPredicate { get; init; } = (ca) => true;
 

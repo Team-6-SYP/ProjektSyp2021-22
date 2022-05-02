@@ -191,6 +191,8 @@ namespace QTTimeManagement.Logic.Controllers
                 ValidateCollectivAgreement(entity);
             }
 
+            entity.LastModified = DateTime.Now;
+
             base.BeforeActionExecute(actionType, entity);
         }
         #endregion
@@ -198,15 +200,35 @@ namespace QTTimeManagement.Logic.Controllers
         #region CheckServices
         public async Task<bool> CheckServiceAsync(Service service)
         {
+            var collectiveAgreement = service.CollectiveAgreementId != null ? await GetByIdAsync(service.CollectiveAgreementId.Value) : null;
+
             //Valitation prüfen --> mit null aufpassen
-            var colAgr = await EntitySet.OrderBy(ca => ca.Begin)
-                                        .LastOrDefaultAsync(ca => ca.Begin <= service.ServiceDay && 
-                                                                 (ca.End != null ? ca.End >= service.ServiceDay : true));
+            var collectiveAgreementNew = await EntitySet.OrderBy(ca => ca.Begin)
+                                        .LastOrDefaultAsync(ca => ca.Begin <= service.ServiceDay &&
+                                           (ca.End != null ? ca.End >= service.ServiceDay : true))
+                                        .ConfigureAwait(false);
 
-            
+            if (collectiveAgreementNew == null && collectiveAgreementNew == null)
+            {
+                return service.IsCompliant = false;
+            }
 
+            if (collectiveAgreement != null )
+            {
+
+            }
+
+
+
+
+            if (service.NotCompliantNotice == null)
+                service.NotCompliantNotice = string.Empty;
+
+            var oldNotices = service.NotCompliantNotice;
+            service.NotCompliantNotice = string.Empty;
 
             return service.IsCompliant;
+
         }
         #endregion
 
