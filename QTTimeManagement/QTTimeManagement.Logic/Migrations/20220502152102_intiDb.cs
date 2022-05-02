@@ -6,11 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QTTimeManagement.Logic.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:QTTimeManagement/QTTimeManagement.Logic/Migrations/20220501174735_initdb.cs
-    public partial class initdb : Migration
-========
-    public partial class InitDB : Migration
->>>>>>>> 14d28e665a80b925ec69eec077157499df5905e7:QTTimeManagement/QTTimeManagement.Logic/Migrations/20220501202020_InitDB.cs
+    public partial class intiDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

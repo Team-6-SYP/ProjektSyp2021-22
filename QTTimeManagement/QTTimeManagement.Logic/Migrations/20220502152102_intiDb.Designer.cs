@@ -12,13 +12,8 @@ using QTTimeManagement.Logic.DataContext;
 namespace QTTimeManagement.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-<<<<<<<< HEAD:QTTimeManagement/QTTimeManagement.Logic/Migrations/20220501174735_initdb.Designer.cs
-    [Migration("20220501174735_initdb")]
-    partial class initdb
-========
-    [Migration("20220501202020_InitDB")]
-    partial class InitDB
->>>>>>>> 14d28e665a80b925ec69eec077157499df5905e7:QTTimeManagement/QTTimeManagement.Logic/Migrations/20220501202020_InitDB.Designer.cs
+    [Migration("20220502152102_intiDb")]
+    partial class intiDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
