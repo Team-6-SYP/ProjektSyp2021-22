@@ -249,6 +249,9 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<int?>("CollectiveAgreementId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CompliantNotice")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
@@ -265,9 +268,6 @@ namespace QTTimeManagement.Logic.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("NotCompliantNotice")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Notes")
                         .HasMaxLength(1000)

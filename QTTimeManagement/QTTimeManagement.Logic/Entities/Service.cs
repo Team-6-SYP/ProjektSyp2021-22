@@ -32,7 +32,7 @@ namespace QTTimeManagement.Logic.Entities
         //CollectiveAgreementControllerCheck
         public bool IsCompliant { get; internal set; } = true;
         
-        public string? NotCompliantNotice { get; internal set; } //No limit --> should never be deleted
+        public string? CompliantNotice { get; internal set; } //No limit --> should never be deleted
 
         public int? CollectiveAgreementId { get; internal set; }
 

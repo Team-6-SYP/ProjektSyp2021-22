@@ -208,14 +208,14 @@ namespace QTTimeManagement.Logic.Controllers
                                            (ca.End != null ? ca.End >= service.ServiceDay : true))
                                         .ConfigureAwait(false);
 
-            if(service.NotCompliantNotice == null)
-            {
-                service.NotCompliantNotice = string.Empty;
-            }
-
             if (collectiveAgreement == null && collectiveAgreementNew == null)
             {
                 return service.IsCompliant = false;
+            }
+
+            if (service.CompliantNotice == null)
+            {
+                service.CompliantNotice = string.Empty;
             }
 
             if (collectiveAgreement != null )
@@ -226,11 +226,11 @@ namespace QTTimeManagement.Logic.Controllers
 
 
 
-            if (service.NotCompliantNotice == null)
-                service.NotCompliantNotice = string.Empty;
+            if (service.CompliantNotice == null)
+                service.CompliantNotice = string.Empty;
 
-            var oldNotices = service.NotCompliantNotice;
-            service.NotCompliantNotice = string.Empty;
+            var oldNotices = service.CompliantNotice;
+            service.CompliantNotice = string.Empty;
 
             return service.IsCompliant;
 
@@ -242,6 +242,19 @@ namespace QTTimeManagement.Logic.Controllers
 
 
             return string.Empty;
+        }
+
+        private const string StartTag = "#Id";
+        private const string EndTag = "#End";
+
+        private string CreateTagForNotice(CollectiveAgreement collectiveAgreement)
+        {
+            return $"{StartTag}: {collectiveAgreement.Id} {collectiveAgreement.Name}\n{DateTime.Now}";
+        }
+
+        private string CreateEndTag(CollectiveAgreement collectiveAgreement)
+        {
+            return $"{EndTag}: {collectiveAgreement.Name}";
         }
         #endregion
 

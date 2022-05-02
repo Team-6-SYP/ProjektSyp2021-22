@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QTTimeManagement.Logic.Migrations
 {
     /// <inheritdoc />
-    public partial class intiDb : Migration
+    public partial class initDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -148,7 +148,7 @@ namespace QTTimeManagement.Logic.Migrations
                     ServiceTemplateId = table.Column<int>(type: "int", nullable: false),
                     IsSameAsTemplate = table.Column<bool>(type: "bit", nullable: false),
                     IsCompliant = table.Column<bool>(type: "bit", nullable: false),
-                    NotCompliantNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompliantNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CollectiveAgreementId = table.Column<int>(type: "int", nullable: true),
                     IsUpdatedThroughTemplate = table.Column<bool>(type: "bit", nullable: false),
                     ChangesThroughTemplateNotice = table.Column<string>(type: "nvarchar(max)", nullable: true),
