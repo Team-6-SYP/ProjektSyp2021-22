@@ -66,7 +66,7 @@ namespace QTTimeManagement.Logic.Controllers
                 ThrowLogicException("Der Überstundenzuschlag muss gößer gleich 0 sein");
 
             if (collectiveAgreement.OvertimeSurchargeBeforWeeklyHourThresholdInPercent < 0)
-                ThrowLogicException("Der Überstundenzuschlag vor erreichen des Wochenstundenschwllwerts muss gößer gleich 0 sein");
+                ThrowLogicException("Der Überstundenzuschlag vor erreichen des Wochenstundenschwellwerts muss gößer gleich 0 sein");
 
             if (collectiveAgreement.HolidaySurchargeInPercent < 0)
                 ThrowLogicException("Der Feiertagszuschlag muss größer gleich 0 sein");

@@ -29,7 +29,7 @@ namespace QTTimeManagement.Logic.Entities
         public double? TransferVacationDays { get; set; }
 
         [NotMapped]
-        public double CurrentVacateionDays; //wird berechnet
+        public double CurrentVacationDays; //wird berechnet
 
 
         //navigagion Properties

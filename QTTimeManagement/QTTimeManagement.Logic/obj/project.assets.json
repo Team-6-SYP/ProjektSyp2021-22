@@ -3388,25 +3388,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\franz\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Knabb\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
+      "projectUniqueName": "C:\\Users\\Knabb\\Source\\Repos\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
       "projectName": "QTTimeManagement.Logic",
-      "projectPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
-      "packagesPath": "C:\\Users\\franz\\.nuget\\packages\\",
-      "outputPath": "C:\\SypProjekt\\QTTimeManagement\\QTTimeManagement.Logic\\obj\\",
+      "projectPath": "C:\\Users\\Knabb\\Source\\Repos\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.Logic\\QTTimeManagement.Logic.csproj",
+      "packagesPath": "C:\\Users\\Knabb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Knabb\\Source\\Repos\\ProjektSyp2021-22\\QTTimeManagement\\QTTimeManagement.Logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\franz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Knabb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -3419,8 +3422,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj": {
-              "projectPath": "C:\\SypProjekt\\QTTimeManagement\\CommonBase\\CommonBase.csproj"
+            "C:\\Users\\Knabb\\Source\\Repos\\ProjektSyp2021-22\\QTTimeManagement\\CommonBase\\CommonBase.csproj": {
+              "projectPath": "C:\\Users\\Knabb\\Source\\Repos\\ProjektSyp2021-22\\QTTimeManagement\\CommonBase\\CommonBase.csproj"
             }
           }
         }
