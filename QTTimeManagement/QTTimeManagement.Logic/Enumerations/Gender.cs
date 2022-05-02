@@ -8,7 +8,7 @@ namespace QTTimeManagement.Logic.Enumerations
 {
     public enum Gender
     {
-        Male, 
+        Male = 1, 
         Female, 
         Transgender, 
         GenderNeutral, 

@@ -8,7 +8,7 @@ namespace QTTimeManagement.Logic.Enumerations
 {
     public enum RateType
     {
-        HourlyWage,
+        HourlyWage = 1,
         Vacation,
         Sickleave,
         VacationDaysPerMonth,

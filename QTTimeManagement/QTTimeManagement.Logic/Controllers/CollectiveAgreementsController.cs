@@ -26,7 +26,7 @@ namespace QTTimeManagement.Logic.Controllers
         /// Validates all properties of the CollectiveAgreement if they set
         /// </summary>
         /// <param name="collectiveAgreement">Entity to valitate</param>
-        public static void ValidateCollectivAgreement(CollectiveAgreement collectiveAgreement)
+        public void ValidateCollectivAgreement(CollectiveAgreement collectiveAgreement)
         {
             ValidateNightHours(collectiveAgreement);
             ValidateBreakSettings(collectiveAgreement);
@@ -37,7 +37,7 @@ namespace QTTimeManagement.Logic.Controllers
             ValitateDiet(collectiveAgreement);
         }
 
-        private static void ValitateDiet(CollectiveAgreement collectiveAgreement)
+        private void ValitateDiet(CollectiveAgreement collectiveAgreement)
         {
             //public int MaxDietPerDay { get; set; }
             //public double DietRatePerDay { get; set; }
@@ -49,7 +49,7 @@ namespace QTTimeManagement.Logic.Controllers
                 ThrowLogicException("Der max. Tageszuschlag für Diäten muss größer gleich 0 sein");
         }
 
-        private static void ValidateOvertime(CollectiveAgreement collectiveAgreement)
+        private void ValidateOvertime(CollectiveAgreement collectiveAgreement)
         {
             /*
             public int OverTimeThresholdWeeklyHours { get; set; }
@@ -72,24 +72,24 @@ namespace QTTimeManagement.Logic.Controllers
                 ThrowLogicException("Der Feiertagszuschlag muss größer gleich 0 sein");
         }
 
-        private static void ValidatePreperationAndPreworkTime(CollectiveAgreement collectiveAgreement)
+        private void ValidatePreperationAndPreworkTime(CollectiveAgreement collectiveAgreement)
         {
             ValidateTimeSpan(collectiveAgreement.PreperationAndPreworkTime, "die min. Zeit für Vor- und Nacharbeitzeit");
         }
 
-        private static void ValidateMinOperatingTimeToPay(CollectiveAgreement collectiveAgreement)
+        private void ValidateMinOperatingTimeToPay(CollectiveAgreement collectiveAgreement)
         {
             ValidateTimeSpan(collectiveAgreement.MinOperatingTimeToPay, "die min. bezahlte Einsatzzeit");
         }
 
-        private static void ValidateMinOperatingTime(CollectiveAgreement collectiveAgreement)
+        private void ValidateMinOperatingTime(CollectiveAgreement collectiveAgreement)
         {
             //public TimeSpan? MaxOperatingTime { get; set; }
 
             ValidateTimeSpan(collectiveAgreement.MaxOperatingTime, "die max. Arbeitszeit");
         }
 
-        private static void ValidateBreakSettings(CollectiveAgreement collectiveAgreement)
+        private void ValidateBreakSettings(CollectiveAgreement collectiveAgreement)
         {
             /*
             public TimeSpan? MaximumBreakDuration { get; set; }
@@ -109,31 +109,31 @@ namespace QTTimeManagement.Logic.Controllers
 
         }
 
-        private static void ValidateMinWorkingTime(CollectiveAgreement collectiveAgreement)
+        private void ValidateMinWorkingTime(CollectiveAgreement collectiveAgreement)
         {
             ValidateTwoBoundTimeSpans(collectiveAgreement.MinWorkingTimeAfterBegin,
                                      collectiveAgreement.MinWorkingTimeBeforeEnd,
                                      "die min. Zeit nach Arbeitsbeginn", "die min. Zeit vor Arbeitsende");
         }
 
-        private static void ValidateMaximumBreakDuration(CollectiveAgreement collectiveAgreement)
+        private void ValidateMaximumBreakDuration(CollectiveAgreement collectiveAgreement)
         {
             ValidateTimeSpan(collectiveAgreement.MaximumUnpaidBreakDuration, "die max. unbezahlte Pause");
         }
 
-        private static void ValidateMinGreatBreakDuration(CollectiveAgreement collectiveAgreement)
+        private void ValidateMinGreatBreakDuration(CollectiveAgreement collectiveAgreement)
         {
             ValidateTimeSpan(collectiveAgreement.MinGreatBreakDuration, "den größen Pausenteil");
         }
 
-        private static void ValidateMinWorkingTimeToGreatBreak(CollectiveAgreement collectiveAgreement)
+        private void ValidateMinWorkingTimeToGreatBreak(CollectiveAgreement collectiveAgreement)
         {
             ValidateTwoBoundTimeSpans(collectiveAgreement.MinTimeGreatBreakAfterBegin,
                                       collectiveAgreement.MinWorkingTimeBeforeEnd,
                                       "di min. Zeit nach Arbeitsbeginn", "die min. Zeit vor Arbeitsende");
         }
 
-        private static void ValidateTimeSpan(TimeSpan? ts, string errorname)
+        private void ValidateTimeSpan(TimeSpan? ts, string errorname)
         {
             if (ts == null)
                 return;
@@ -145,7 +145,7 @@ namespace QTTimeManagement.Logic.Controllers
                 ThrowLogicException($"Zeitspanne für {errorname} kann nicht länger als einen Tag dauern");
         }
 
-        private static void ValidateTwoBoundTimeSpans(TimeSpan? ts1, TimeSpan? ts2, string errorname1, string errorname2)
+        private void ValidateTwoBoundTimeSpans(TimeSpan? ts1, TimeSpan? ts2, string errorname1, string errorname2)
         {
             if (ts1 == null && ts2 == null)
                 return;
@@ -157,7 +157,7 @@ namespace QTTimeManagement.Logic.Controllers
             ValidateTimeSpan(ts2, errorname2);
         }
 
-        private static void ValidateNightHours(CollectiveAgreement collectiveAgreement)
+        private void ValidateNightHours(CollectiveAgreement collectiveAgreement)
         {
             /*
             public DateTime? NightHoursBegin { get; set; }
@@ -177,7 +177,7 @@ namespace QTTimeManagement.Logic.Controllers
                 ThrowLogicException("Nachtstunde können nicht länger als 24 Stunden dauern.");
         }
 
-        private static void ThrowLogicException(string msg)
+        private void ThrowLogicException(string msg)
         {
             throw new LogicException(msg);
         }
@@ -208,7 +208,12 @@ namespace QTTimeManagement.Logic.Controllers
                                            (ca.End != null ? ca.End >= service.ServiceDay : true))
                                         .ConfigureAwait(false);
 
-            if (collectiveAgreementNew == null && collectiveAgreementNew == null)
+            if(service.NotCompliantNotice == null)
+            {
+                service.NotCompliantNotice = string.Empty;
+            }
+
+            if (collectiveAgreement == null && collectiveAgreementNew == null)
             {
                 return service.IsCompliant = false;
             }
@@ -228,6 +233,11 @@ namespace QTTimeManagement.Logic.Controllers
             service.NotCompliantNotice = string.Empty;
 
             return service.IsCompliant;
+
+        }
+
+        private string GetLastNotice(ref string notice)
+        {
 
         }
         #endregion
