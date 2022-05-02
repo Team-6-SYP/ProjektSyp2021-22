@@ -10,8 +10,8 @@ namespace QTTimeManagement.Logic.Interfaces
     public interface ITimeable
     {
         public TimeType TimeType { get; set; }
-        public DateTime? Begin { get; set; }
-        public DateTime End { get; set; }
-        public TimeSpan Duration => End - (Begin ?? new DateTime()) ;
+        public TimeSpan? Begin { get; set; }
+        public TimeSpan End { get; set; }
+        public TimeSpan Duration => End - (Begin ?? new TimeSpan()) ;
     }
 }

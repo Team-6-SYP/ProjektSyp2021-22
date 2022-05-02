@@ -77,14 +77,11 @@ namespace QTTimeManagement.Logic.Controllers
         #region Entity Check
         private void CheckEntity(Employee entity)
         {
-            if (entity == null)
-                throw new ArgumentNullException($"Darf nicht null sein: {nameof(entity)}");
-
             if (!entity.Email.Contains('@'))
-                throw new ArgumentException($"Die Email Adresse {entity.Email} ist ungültig!!");
+                throw new Logic.Modules.Exceptions.LogicException($"Die Email Adresse {entity.Email} ist ungültig!!");
             
             if (entity.FirstName == string.Empty || entity.LastName == string.Empty )
-                throw new ArgumentException($"Es muss ein vollständiger Name angegeben werden.");
+                throw new Logic.Modules.Exceptions.LogicException($"Es muss ein vollständiger Name angegeben werden.");
 
 
         }

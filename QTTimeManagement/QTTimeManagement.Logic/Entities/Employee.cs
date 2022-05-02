@@ -11,8 +11,8 @@ namespace QTTimeManagement.Logic.Entities
     [Table("Employees", Schema = "timemanagement")]
     public class Employee : Person
     {
-        [Required]
-        public DateTime HireDate { get; set; }
+        [Column(TypeName = "Date")]
+        public DateTime? HireDate { get; set; }
 
         [Required]
         public double WeeklyHours { get; set; }
@@ -25,6 +25,9 @@ namespace QTTimeManagement.Logic.Entities
 
         [Required]
         public Weekday BeginWorkingWeek { get; set; }
+
+        [Required]
+        public double VacationWeeksPerYear { get; set; }
 
         public double? TransferVacationDays { get; set; }
 

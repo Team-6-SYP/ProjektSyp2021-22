@@ -17,7 +17,10 @@ namespace QTTimeManagement.Logic.Entities
         [MaxLength(50)]
         public string Name { get; set; } = string.Empty;
 
+        public bool IsHalfHoliday { get; set; }
+
         [Required]
+        [Column(TypeName = "Date")]
         public DateTime Date { get; set; }
     }
 }

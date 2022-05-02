@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Controllers
 {
-    public sealed class RateController : GenericController<Rate>
+    public sealed class RateController : GenericValidityController<Rate>
     {
 
         #region Contructor

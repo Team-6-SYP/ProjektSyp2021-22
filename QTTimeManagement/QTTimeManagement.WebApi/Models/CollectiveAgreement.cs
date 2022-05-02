@@ -3,6 +3,7 @@
     public class CollectiveAgreement : VadalityModelWithoutVersion
     {
         public string Name { get; set; } = string.Empty;
+        public DateTime LastModified { get; set; }
 
         #region nighthours
         public DateTime? NightHoursBegin { get; set; }

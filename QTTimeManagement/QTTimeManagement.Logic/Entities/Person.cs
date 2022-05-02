@@ -29,6 +29,7 @@ namespace QTTimeManagement.Logic.Entities
         public string Email { get; set; } = string.Empty;
         
         [Required]
+        [Column(TypeName = "Date")]
         public DateTime DayOfBirth { get; set; }
     }
 }

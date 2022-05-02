@@ -16,10 +16,14 @@ namespace QTTimeManagement.Logic.Entities
         [MaxLength(150)]
         public string Name { get; set; } = string.Empty;
 
+        [Required]
+        public ServiceType ServiceType { get; set; }
+
         [MaxLength(1000)]
         public string? Notes { get; set; }
 
         [Required]
+        [Column(TypeName = "Date")]
         public DateTime ServiceDay { get; set; }   
 
         [Required]

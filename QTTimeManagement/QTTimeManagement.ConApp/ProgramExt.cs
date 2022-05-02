@@ -80,23 +80,29 @@ namespace QTTimeManagement.ConApp
                 MaxDietsPerDay = 12
             };
 
-            var ca2 = new CollectiveAgreement();
-            ca2.CopyFrom(ca1);
-            ca2.Name = "Test2";
-            ca2.Begin = DateTime.Now.AddDays(1);
+            //var ca2 = new CollectiveAgreement();
+            //ca2.CopyFrom(ca1);
+            //ca2.Name = "Test2";
+            //ca2.Begin = DateTime.Now.AddDays(1);
 
-            var ca3 = new CollectiveAgreement();
-            ca3.CopyFrom(ca1);
-            ca3.Name = "Test3";
-            ca3.Begin = DateTime.Now.AddDays(4);
+            //var ca3 = new CollectiveAgreement();
+            //ca3.CopyFrom(ca1);
+            //ca3.Name = "Test3";
+            //ca3.Begin = DateTime.Now.AddDays(4);
+
+            //var ca4 = new CollectiveAgreement();
+            //ca4.CopyFrom(ca1);
+            //ca4.Name = "Test4";
+            //ca4.Begin = new DateTime();
 
             using var ctrl = new Logic.Controllers.CollectiveAgreementsController();
 
             Task.Run(async () =>
             {
                 await ctrl.InsertAsync(ca1);
-                await ctrl.InsertAsync(ca3);
-                await ctrl.InsertAsync(ca2);
+                //await ctrl.InsertAsync(ca3);
+                //await ctrl.InsertAsync(ca2);
+                //await ctrl.InsertAsync(ca4);
                 await ctrl.SaveChangesAsync();
             }).Wait();
 

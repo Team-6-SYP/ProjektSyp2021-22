@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace QTTimeManagement.Logic.Entities
 {
     [Table("CollectiveAgreements", Schema = "timemanagement")]
-    [Index(nameof(Name), IsUnique = true)]
     [Index(nameof(Begin), nameof(Name), IsUnique = true)]
     public class CollectiveAgreement : ValidityEntity<CollectiveAgreement>
     {

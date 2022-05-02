@@ -11,8 +11,10 @@ namespace QTTimeManagement.Logic.Entities
     public abstract class ValidityEntity<T> : VersionEntity, IValidityable<T>
     {
         [Required]
+        [Column(TypeName = "Date")]
         public DateTime Begin { get; set; }
 
+        [Column(TypeName = "Date")]
         public DateTime? End { get; internal set; }
 
         [NotMapped]
