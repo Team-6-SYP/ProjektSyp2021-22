@@ -239,6 +239,9 @@ namespace QTTimeManagement.Logic.Controllers
         private string GetLastNotice(ref string notice)
         {
 
+
+
+            return string.Empty;
         }
         #endregion
 
