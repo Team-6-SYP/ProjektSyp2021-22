@@ -21,7 +21,15 @@ namespace QTTimeManagement.Logic.Controllers
 
         private void SetEndDatesInsertAndUpdate(TEntity entity, Predicate<TEntity> predicate)
         {
-            var orderedSubSet = EntitySet.Local.ToList().Where(e => predicate(e)).OrderBy(e => e.Begin);
+            var database = EntitySet.AsEnumerable().Where(e => predicate(e)).ToList();
+
+            var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
+
+            for (int i = 0; i < database.Count(); i++)
+            {
+                if (!orderedSubSet.Any(e => e.Id == database[i].Id))
+                    orderedSubSet.Add(database[i]);
+            }
 
             var previous = orderedSubSet.LastOrDefault(e => e.Begin < entity.Begin);
             var next = orderedSubSet.FirstOrDefault(e => e.Begin > entity.Begin);
@@ -39,7 +47,15 @@ namespace QTTimeManagement.Logic.Controllers
 
         private void SetEndDatesDelete(TEntity entity, Predicate<TEntity> predicate)
         {
-            var orderedSubSet = EntitySet.Local.ToList().Where(e => predicate(e)).OrderBy(e => e.Begin);
+            var database = EntitySet.AsEnumerable().Where(e => predicate(e)).ToList();
+
+            var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
+
+            for (int i = 0; i < database.Count(); i++)
+            {
+                if (!orderedSubSet.Any(e => e.Id == database[i].Id))
+                    orderedSubSet.Add(database[i]);
+            }
 
             var previous = orderedSubSet.LastOrDefault(e => e.Begin < entity.Begin);
             var next = orderedSubSet.FirstOrDefault(e => e.Begin > entity.Begin);
