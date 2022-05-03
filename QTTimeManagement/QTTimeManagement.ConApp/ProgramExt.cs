@@ -60,7 +60,7 @@ namespace QTTimeManagement.ConApp
             var ca1 = new CollectiveAgreement()
             {
                 Name = "Test1",
-                Begin = DateTime.Now.AddDays(15),
+                Begin = DateTime.Now.AddDays(20),
                 NightHoursBegin = DateTime.Now,
                 NightHoursEnd = DateTime.Now.AddHours(4),
                 MaximumUnpaidBreakDuration = new TimeSpan(1, 30, 0),
@@ -83,17 +83,17 @@ namespace QTTimeManagement.ConApp
             var ca2 = new CollectiveAgreement();
             ca2.CopyFrom(ca1);
             ca2.Name = "Test2";
-            ca2.Begin = DateTime.Now.AddDays(1);
+            ca2.Begin = ca1.Begin.AddDays(1);
 
             var ca3 = new CollectiveAgreement();
             ca3.CopyFrom(ca1);
             ca3.Name = "Test3";
-            ca3.Begin = DateTime.Now.AddDays(4);
+            ca3.Begin = ca1.Begin.AddDays(5);
 
             var ca4 = new CollectiveAgreement();
             ca4.CopyFrom(ca1);
             ca4.Name = "Test4";
-            ca4.Begin = new DateTime();
+            ca4.Begin = ca1.Begin.AddDays(4);
 
             using var ctrl = new Logic.Controllers.CollectiveAgreementsController();
 
