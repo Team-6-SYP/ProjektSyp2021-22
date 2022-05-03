@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Time-Management.Logic", "Time-Management.Logic\Time-Management.Logic.csproj", "{337EEE01-36EE-43AC-B5D7-B41632885B4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{337EEE01-36EE-43AC-B5D7-B41632885B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337EEE01-36EE-43AC-B5D7-B41632885B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337EEE01-36EE-43AC-B5D7-B41632885B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337EEE01-36EE-43AC-B5D7-B41632885B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43511EC1-EEC8-480B-A055-0E45FAABABD8}
+	EndGlobalSection
+EndGlobal
