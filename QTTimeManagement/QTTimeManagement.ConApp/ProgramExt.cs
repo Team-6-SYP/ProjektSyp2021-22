@@ -60,7 +60,7 @@ namespace QTTimeManagement.ConApp
             var ca1 = new CollectiveAgreement()
             {
                 Name = "Test101",
-                Begin = DateTime.Now.AddDays(20),
+                Begin = DateTime.Now.AddDays(1),
                 NightHoursBegin = DateTime.Now,
                 NightHoursEnd = DateTime.Now.AddHours(4),
                 MaximumUnpaidBreakDuration = new TimeSpan(1, 30, 0),

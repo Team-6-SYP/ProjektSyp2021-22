@@ -20,41 +20,31 @@ namespace QTTimeManagement.Logic.Controllers
         {
         }
 
-        private IEnumerable<TEntity>? currentData = null;
-
         public IEnumerable<TEntity> GetRelatedData(Predicate<TEntity> predicate)
         {
-            if (currentData == null)
-            {
-                currentData = EntitySet.AsEnumerable().Where(e => e.VadilityPredicate(e)).ToList();
-            }
-
-            return currentData;
+            return EntitySet.AsEnumerable().Where(e => predicate(e)).ToList();
         }
 
-        private async Task SetEndDatesInsertAndUpdateAsync(TEntity entity, Predicate<TEntity> predicate)
+        private void SetEndDatesInsertAndUpdate(TEntity entity, Predicate<TEntity> predicate)
         {
-            await Task.Run(() =>
+            var database = GetRelatedData(predicate);
+
+            var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
+
+            var previous = orderedSubSet.LastOrDefault(e => e.Begin <= entity.Begin);
+            var next = orderedSubSet.FirstOrDefault(e => e.Begin >= entity.Begin);
+
+            if (previous != null)
             {
-                var database = GetRelatedData(predicate);
+                CompareToEntityBegins(previous, entity);
+                previous.End = entity.Begin.AddDays(-1);
+            }
 
-                var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
-
-                var previous = orderedSubSet.LastOrDefault(e => e.Begin <= entity.Begin);
-                var next = orderedSubSet.FirstOrDefault(e => e.Begin >= entity.Begin);
-
-                if (previous != null)
-                {
-                    CompareToEntityBegins(previous, entity);
-                    previous.End = entity.Begin.AddDays(-1);
-                }
-
-                if (next != null)
-                {
-                    CompareToEntityBegins(entity, next);
-                    entity.End = next.Begin.AddDays(-1);
-                }
-            }).ConfigureAwait(false);
+            if (next != null)
+            {
+                CompareToEntityBegins(entity, next);
+                entity.End = next.Begin.AddDays(-1);
+            }
         }
 
         private void CompareToEntityBegins(TEntity e1, TEntity e2)
@@ -63,57 +53,45 @@ namespace QTTimeManagement.Logic.Controllers
                 throw new LogicException($"Es gibt bereits ein Element mit Gültigkeitsbeginn am {DateOnly.FromDateTime(e1.Begin)}");
         }
 
-        private async Task SetEndDatesDeleteAsync(TEntity entity, Predicate<TEntity> predicate)
+        private void SetEndDatesDelete(TEntity entity, Predicate<TEntity> predicate)
         {
-            await Task.Run(() =>
+            var database = GetRelatedData(predicate);
+
+            var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
+
+            var previous = orderedSubSet.LastOrDefault(e => e.Begin < entity.Begin);
+            var next = orderedSubSet.FirstOrDefault(e => e.Begin > entity.Begin);
+
+            if (previous != null && next != null)
             {
-                var database = GetRelatedData(predicate);
-
-                var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
-
-                var previous = orderedSubSet.LastOrDefault(e => e.Begin < entity.Begin);
-                var next = orderedSubSet.FirstOrDefault(e => e.Begin > entity.Begin);
-
-                if (previous != null && next != null)
-                {
-                    previous.End = next.Begin.AddDays(-1);
-                }
-                else if (previous != null && next == null)
-                {
-                    previous.End = null;
-                }
-            }).ConfigureAwait(false);
+                previous.End = next.Begin.AddDays(-1);
+            }
+            else if (previous != null && next == null)
+            {
+                previous.End = null;
+            }
         }
 
         protected override void BeforeActionExecute(ActionType actionType, TEntity entity)
         {
-            if(actionType == ActionType.Insert || actionType == ActionType.Update)
+            if (actionType == ActionType.Insert || actionType == ActionType.Update)
             {
-                Task.Run(async () =>
-                {
-                    await SetEndDatesInsertAndUpdateAsync(entity, entity.VadilityPredicate);
-                });        
+                SetEndDatesInsertAndUpdate(entity, entity.VadilityPredicate);
             }
 
             if (actionType == ActionType.Delete)
             {
-                Task.Run(async () =>
-                {
-                    await SetEndDatesDeleteAsync(entity, entity.VadilityPredicate);
-                });               
+                SetEndDatesDelete(entity, entity.VadilityPredicate);
             }
 
             base.BeforeActionExecute(actionType, entity);
         }
 
-        public async Task<TEntity?> GetByDateTimeAsync(DateTime date, Predicate<TEntity> predicate)
+        public TEntity? GetByDateTimeAsync(DateTime date, Predicate<TEntity> predicate)
         {
-            return await Task.Run(() =>
-            {
-                var database = GetRelatedData(predicate);
+            var database = GetRelatedData(predicate);
 
-                return database.FirstOrDefault(e => date >= e.Begin && (e.End == null ? true : date <= e.End));
-            });    
+            return database.FirstOrDefault(e => date >= e.Begin && (e.End == null ? true : date <= e.End));
         }
     }
 }
