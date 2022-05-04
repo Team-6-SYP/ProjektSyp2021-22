@@ -59,7 +59,7 @@ namespace QTTimeManagement.ConApp
 
             var ca1 = new CollectiveAgreement()
             {
-                Name = "Test1",
+                Name = "Test101",
                 Begin = DateTime.Now.AddDays(20),
                 NightHoursBegin = DateTime.Now,
                 NightHoursEnd = DateTime.Now.AddHours(4),
@@ -100,9 +100,9 @@ namespace QTTimeManagement.ConApp
             Task.Run(async () =>
             {
                 await ctrl.InsertAsync(ca1);
-                await ctrl.InsertAsync(ca3);
-                await ctrl.InsertAsync(ca2);
-                await ctrl.InsertAsync(ca4);
+                //await ctrl.InsertAsync(ca3);
+                //await ctrl.InsertAsync(ca2);
+                //await ctrl.InsertAsync(ca4);
                 await ctrl.SaveChangesAsync();
             }).Wait();
 

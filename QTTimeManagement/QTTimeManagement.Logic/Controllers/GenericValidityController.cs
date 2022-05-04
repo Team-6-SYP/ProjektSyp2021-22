@@ -1,5 +1,6 @@
 ﻿using QTTimeManagement.Logic.Entities;
 using QTTimeManagement.Logic.Interfaces;
+using QTTimeManagement.Logic.Modules.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,71 +22,98 @@ namespace QTTimeManagement.Logic.Controllers
 
         private IEnumerable<TEntity>? currentData = null;
 
-        public IEnumerable<TEntity> CurrentData
+        public IEnumerable<TEntity> GetRelatedData(Predicate<TEntity> predicate)
         {
-            get
+            if (currentData == null)
             {
-                if(currentData == null)
+                currentData = EntitySet.AsEnumerable().Where(e => e.VadilityPredicate(e)).ToList();
+            }
+
+            return currentData;
+        }
+
+        private async Task SetEndDatesInsertAndUpdateAsync(TEntity entity, Predicate<TEntity> predicate)
+        {
+            await Task.Run(() =>
+            {
+                var database = GetRelatedData(predicate);
+
+                var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
+
+                var previous = orderedSubSet.LastOrDefault(e => e.Begin <= entity.Begin);
+                var next = orderedSubSet.FirstOrDefault(e => e.Begin >= entity.Begin);
+
+                if (previous != null)
                 {
-                    currentData = EntitySet.AsEnumerable().Where(e => e.VadilityPredicate(e)).ToList();
+                    CompareToEntityBegins(previous, entity);
+                    previous.End = entity.Begin.AddDays(-1);
                 }
 
-                return currentData;
-            }
+                if (next != null)
+                {
+                    CompareToEntityBegins(entity, next);
+                    entity.End = next.Begin.AddDays(-1);
+                }
+            }).ConfigureAwait(false);
         }
 
-        private void SetEndDatesInsertAndUpdate(TEntity entity, Predicate<TEntity> predicate)
+        private void CompareToEntityBegins(TEntity e1, TEntity e2)
         {
-            var database = CurrentData;
-
-            var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
-
-            var previous = orderedSubSet.LastOrDefault(e => e.Begin < entity.Begin);
-            var next = orderedSubSet.FirstOrDefault(e => e.Begin > entity.Begin);
-
-            if(previous != null)
-            {
-                previous.End = entity.Begin.AddDays(-1);
-            }
-
-            if(next != null)
-            {
-                entity.End = next.Begin.AddDays(-1);
-            }
+            if (e1.Begin.Date == e2.Begin.Date)
+                throw new LogicException($"Es gibt bereits ein Element mit Gültigkeitsbeginn am {DateOnly.FromDateTime(e1.Begin)}");
         }
 
-        private void SetEndDatesDelete(TEntity entity, Predicate<TEntity> predicate)
+        private async Task SetEndDatesDeleteAsync(TEntity entity, Predicate<TEntity> predicate)
         {
-            var database = CurrentData;
-
-            var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
-
-            var previous = orderedSubSet.LastOrDefault(e => e.Begin < entity.Begin);
-            var next = orderedSubSet.FirstOrDefault(e => e.Begin > entity.Begin);
-
-            if (previous != null && next != null)
+            await Task.Run(() =>
             {
-                previous.End = next.Begin.AddDays(-1);
-            }
-            else if(previous != null && next == null)
-            {
-                previous.End = null;
-            }  
+                var database = GetRelatedData(predicate);
+
+                var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
+
+                var previous = orderedSubSet.LastOrDefault(e => e.Begin < entity.Begin);
+                var next = orderedSubSet.FirstOrDefault(e => e.Begin > entity.Begin);
+
+                if (previous != null && next != null)
+                {
+                    previous.End = next.Begin.AddDays(-1);
+                }
+                else if (previous != null && next == null)
+                {
+                    previous.End = null;
+                }
+            }).ConfigureAwait(false);
         }
 
         protected override void BeforeActionExecute(ActionType actionType, TEntity entity)
         {
             if(actionType == ActionType.Insert || actionType == ActionType.Update)
             {
-                SetEndDatesInsertAndUpdate(entity, entity.VadilityPredicate);          
+                Task.Run(async () =>
+                {
+                    await SetEndDatesInsertAndUpdateAsync(entity, entity.VadilityPredicate);
+                });        
             }
 
             if (actionType == ActionType.Delete)
             {
-                SetEndDatesDelete(entity, entity.VadilityPredicate);
+                Task.Run(async () =>
+                {
+                    await SetEndDatesDeleteAsync(entity, entity.VadilityPredicate);
+                });               
             }
 
             base.BeforeActionExecute(actionType, entity);
+        }
+
+        public async Task<TEntity?> GetByDateTimeAsync(DateTime date, Predicate<TEntity> predicate)
+        {
+            return await Task.Run(() =>
+            {
+                var database = GetRelatedData(predicate);
+
+                return database.FirstOrDefault(e => date >= e.Begin && (e.End == null ? true : date <= e.End));
+            });    
         }
     }
 }
