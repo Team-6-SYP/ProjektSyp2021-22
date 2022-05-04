@@ -35,16 +35,13 @@ namespace QTTimeManagement.Logic.Controllers
         #region Insert
         public override Task<Employee> InsertAsync(Employee entity)
         {
-            CheckEntity(entity);
+
             return base.InsertAsync(entity);
         }
 
         public override Task<IEnumerable<Employee>> InsertAsync(IEnumerable<Employee> entities)
         {
-            foreach (var entity in entities)
-            {
-                CheckEntity(entity);
-            }
+
             return base.InsertAsync(entities);
         }
         #endregion Insert
@@ -52,15 +49,12 @@ namespace QTTimeManagement.Logic.Controllers
         #region Update
         public override Task<Employee> UpdateAsync(Employee entity)
         {
-            CheckEntity(entity);
+
             return base.UpdateAsync(entity);
         }
         public override Task<IEnumerable<Employee>> UpdateAsync(IEnumerable<Employee> entities)
         {
-            foreach (var entity in entities)
-            {
-                CheckEntity(entity);
-            }
+
             return base.UpdateAsync(entities);
         }
         #endregion Update
@@ -74,17 +68,59 @@ namespace QTTimeManagement.Logic.Controllers
 
         #endregion Basic GRUD 
 
+
+
+
+        protected override void BeforeActionExecute(ActionType actionType, Employee entity)
+        {
+            if (actionType == ActionType.Insert)
+            {
+                CheckEntity(entity);
+            }
+
+            if (actionType == ActionType.Update)
+            {
+                if (entity.Services.Count() == 0)
+                    throw new Modules.Exceptions.LogicException($"Werte dürfen nur geändert werden, wenn ein Service gesetzt wurde.");
+
+                else
+                    CheckEntity(entity);
+            }
+
+            base.BeforeActionExecute(actionType, entity);
+        }
+
+
+
         #region Entity Check
         private void CheckEntity(Employee entity)
         {
-            if (!entity.Email.Contains('@'))
-                throw new Logic.Modules.Exceptions.LogicException($"Die Email Adresse {entity.Email} ist ungültig!!");
-            
-            if (entity.FirstName == string.Empty || entity.LastName == string.Empty )
-                throw new Logic.Modules.Exceptions.LogicException($"Es muss ein vollständiger Name angegeben werden.");
+            if (!entity.Email.Contains('@') && entity.Email.Contains('.'))
+                throw new Modules.Exceptions.LogicException($"Die Email Adresse {entity.Email} ist ungültig!!");
 
+            if (entity.FirstName == string.Empty || entity.LastName == string.Empty)
+                throw new Modules.Exceptions.LogicException($"Es muss ein vollständiger Name angegeben werden.");
+
+            if (entity.DayOfBirth > DateTime.Now)
+                throw new Modules.Exceptions.LogicException($"Das Geburtsdatum darf nicht in der Zukunft liegen.");
+
+            if (entity.HireDate < entity.DayOfBirth)
+                throw new Modules.Exceptions.LogicException($"Das Einstellungsdatum ist nicht korrekt.");
+
+            if (entity.WorkingDaysPerWeek < 1 || entity.WorkingDaysPerWeek > 7)
+                throw new Modules.Exceptions.LogicException($"Die Arbeitsage in der Woche müssen mindestens 1 und höchstens 7 sein.");
+
+            if (entity.WeeklyHours < 0 || entity.WeeklyHours > 168)
+                throw new Modules.Exceptions.LogicException($"Die Wochenstunden sind nicht korrekt");
+
+            if (entity.BeginWorkingWeek == 0)
+                throw new Modules.Exceptions.LogicException($"Es muss ein Tag gesetzt werden.");
 
         }
         #endregion Entity Check
+
+
+
+
     }
 }

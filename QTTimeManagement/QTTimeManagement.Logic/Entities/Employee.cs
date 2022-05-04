@@ -21,7 +21,16 @@ namespace QTTimeManagement.Logic.Entities
         public int WorkingDaysPerWeek { get; set; }
 
         [NotMapped]
-        public double DailyWorkingTime => WeeklyHours / WorkingDaysPerWeek; // div durch 0
+        public double DailyWorkingTime
+        {
+            get
+            {
+                if (WorkingDaysPerWeek == 0)
+                    throw new InvalidOperationException("Division durch null !");
+
+                return WeeklyHours / WorkingDaysPerWeek;
+            }
+        }
 
         [Required]
         public Weekday BeginWorkingWeek { get; set; }
@@ -32,8 +41,43 @@ namespace QTTimeManagement.Logic.Entities
         public double? TransferVacationDays { get; set; }
 
         [NotMapped]
-        public double CurrentVacationDays; //wird berechnet
+        public double CurrentVacationDays
+        {
+            get
+            {
+                if (HireDate != null)
+                {
+                    if (DateTime.Now.Year == HireDate.Value.Year)
+                    {
+                        var result = DateTime.Now - HireDate;
 
+                        return (result.Value.Days * 0.0686813);
+                    }
+                    else if ((DateTime.Now.Year - HireDate.Value.Year) >= 25)
+                    {
+                        return 30.0; // bei 25 Jahren Dienstzeit = 30 Tage Anspruch
+                    }
+                    else
+                        return 25.0; // bei einer 5 Tageswoche = 25 Tage Anspruch
+
+
+                    //  6 Tage - Woche = 30 Arbeits / Urlaubstage
+
+                    // 5 Tage - Woche = 25 Arbeits / Urlaubstage
+
+                    //4 Tage - Woche = 20 Arbeits / Urlaubstage
+
+                    //3 Tage - Woche = 15 Arbeits / Urlaubstage
+
+                    //2 Tage - Woche = 10 Arbeits / Urlaubstage
+
+                    //1 Tag - Woche = 5 Arbeits / Urlaubstage 
+                }
+
+                return 0;
+
+            }
+        }
 
         //navigagion Properties
         public IEnumerable<Rate> Rates { get; set; } = new List<Rate>();

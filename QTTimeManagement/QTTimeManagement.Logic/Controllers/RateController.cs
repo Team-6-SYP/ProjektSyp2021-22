@@ -38,16 +38,13 @@ namespace QTTimeManagement.Logic.Controllers
         #region Insert
         public override Task<IEnumerable<Rate>> InsertAsync(IEnumerable<Rate> entities)
         {
-            foreach (var entity in entities)
-            {
-                CheckEntity(entity);
-            }
+           
             return base.InsertAsync(entities);
         }
 
         public override Task<Rate> InsertAsync(Rate entity)
         {
-            CheckEntity(entity);
+            
             return base.InsertAsync(entity);
         }
         #endregion Insert
@@ -55,17 +52,14 @@ namespace QTTimeManagement.Logic.Controllers
         #region Update
         public override Task<Rate> UpdateAsync(Rate entity)
         {
-            CheckEntity(entity);
+            
 
             return base.UpdateAsync(entity);
         }
 
         public override Task<IEnumerable<Rate>> UpdateAsync(IEnumerable<Rate> entities)
         {
-            foreach (var entity in entities)
-            {
-                CheckEntity(entity);
-            }
+           
 
             return base.UpdateAsync(entities);
         }
@@ -81,13 +75,25 @@ namespace QTTimeManagement.Logic.Controllers
         #endregion Basic GRUD
 
 
+        protected override void BeforeActionExecute(ActionType actionType, Rate entity)
+        {
+            if (actionType == ActionType.Insert || actionType == ActionType.Update)
+            {
+                CheckEntity(entity);
+            }
+
+            base.BeforeActionExecute(actionType, entity);
+        }
+
         #region Entity Check
 
         private void CheckEntity(Rate entity)
         {
-            if (entity == null)
-                throw new ArgumentNullException($"Darf nicht null sein: {nameof(entity)}");
+            if (entity.RateAmount < 0)
+                throw new Modules.Exceptions.LogicException($"Die Anzahl darf nicht kleiner null sein.");
 
+            if ( entity.RateType == 0)
+                throw new Modules.Exceptions.LogicException($"Wert muss gesetzt werden.");
 
         }
 
