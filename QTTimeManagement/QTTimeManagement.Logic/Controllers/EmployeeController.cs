@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace QTTimeManagement.Logic.Controllers
 {
     public sealed class EmployeeController : GenericController<Employee>
@@ -91,11 +92,10 @@ namespace QTTimeManagement.Logic.Controllers
         }
 
 
-
         #region Entity Check
         private void CheckEntity(Employee entity)
         {
-            if (!entity.Email.Contains('@') && entity.Email.Contains('.'))
+            if (!entity.Email.Contains('@') && !entity.Email.Contains('.'))
                 throw new Modules.Exceptions.LogicException($"Die Email Adresse {entity.Email} ist ungültig!!");
 
             if (entity.FirstName == string.Empty || entity.LastName == string.Empty)
@@ -115,6 +115,13 @@ namespace QTTimeManagement.Logic.Controllers
 
             if (entity.BeginWorkingWeek == 0)
                 throw new Modules.Exceptions.LogicException($"Es muss ein Tag gesetzt werden.");
+
+            if (entity.TransferVacationDays < 0)
+                throw new Modules.Exceptions.LogicException($"Es dürfen keinen negativen Urlaubstage transferiert werden.");
+
+            if (entity.VacationDaysPerYear < 1 && entity.VacationDaysPerYear > 365)
+                throw new Modules.Exceptions.LogicException($"Der Ulraubsanspruch muss richtig eingetragen werden.");
+
 
         }
         #endregion Entity Check

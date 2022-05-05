@@ -36,48 +36,25 @@ namespace QTTimeManagement.Logic.Entities
         public Weekday BeginWorkingWeek { get; set; }
 
         [Required]
-        public double VacationWeeksPerYear { get; set; }
+        public double VacationDaysPerYear { get; set; }
 
         public double? TransferVacationDays { get; set; }
 
         [NotMapped]
-        public double CurrentVacationDays
-        {
-            get
-            {
-                if (HireDate != null)
-                {
-                    if (DateTime.Now.Year == HireDate.Value.Year)
-                    {
-                        var result = DateTime.Now - HireDate;
+        public double CurrentVacationDays => VacationDaysPerYear + (TransferVacationDays ?? 0); //Randbemerkung:  Urlaubsanspruch / Tag (bei 5 T) =  0,0684462696783
 
-                        return (result.Value.Days * 0.0686813);
-                    }
-                    else if ((DateTime.Now.Year - HireDate.Value.Year) >= 25)
-                    {
-                        return 30.0; // bei 25 Jahren Dienstzeit = 30 Tage Anspruch
-                    }
-                    else
-                        return 25.0; // bei einer 5 Tageswoche = 25 Tage Anspruch
+        [NotMapped]
+        public IEnumerable<Service> VacationDays => Services.Where(s => s.ServiceType == ServiceType.Vacation);
 
+        [NotMapped]
+        public IEnumerable<Service> SickLeaveDays => Services.Where(s => s.ServiceType == ServiceType.Sickleave) ;
+              
+        [NotMapped]
+        public IEnumerable<Service> SpecialCaseDays => Services.Where(s => s.ServiceType == ServiceType.SpecialCase);
 
-                    //  6 Tage - Woche = 30 Arbeits / Urlaubstage
+        [NotMapped]
+        public IEnumerable<Service> WorkingDays => Services.Where(s => s.ServiceType == ServiceType.Working);
 
-                    // 5 Tage - Woche = 25 Arbeits / Urlaubstage
-
-                    //4 Tage - Woche = 20 Arbeits / Urlaubstage
-
-                    //3 Tage - Woche = 15 Arbeits / Urlaubstage
-
-                    //2 Tage - Woche = 10 Arbeits / Urlaubstage
-
-                    //1 Tag - Woche = 5 Arbeits / Urlaubstage 
-                }
-
-                return 0;
-
-            }
-        }
 
         //navigagion Properties
         public IEnumerable<Rate> Rates { get; set; } = new List<Rate>();
