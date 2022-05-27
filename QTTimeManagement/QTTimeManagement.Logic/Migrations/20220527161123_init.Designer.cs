@@ -12,8 +12,8 @@ using QTTimeManagement.Logic.DataContext;
 namespace QTTimeManagement.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20220506170813_Test1Db")]
-    partial class Test1Db
+    [Migration("20220527161123_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

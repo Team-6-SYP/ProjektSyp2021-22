@@ -13,7 +13,7 @@
   <Class Name="QTTimeManagement.Logic.Entities.Employee" Collapsed="true">
     <Position X="5.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAgAAAAAAAAAgAAACAAAAACgAAABAACQAAAAAAAA=</HashCode>
+      <HashCode>xAAAAgAAQAAAAAAGAAACAAIIACgAAABAACQAAAAAAAA=</HashCode>
       <FileName>Entities\Employee.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -55,13 +55,13 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAgAAgCCAAAACIEABAEAgQgCAAAAAAAEAIAgAACAAQ=</HashCode>
+      <HashCode>AAAoAAgCCAAAAAIEABAEAgQgCAAAAAAQAAJAgAACAAQ=</HashCode>
       <FileName>Entities\Service.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
+      <Property Name="Employee" />
       <Property Name="ServiceTemplate" />
       <Property Name="CollectiveAgreement" />
-      <Property Name="Employee" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="TimeBlocks" />
@@ -70,7 +70,7 @@
   <Class Name="QTTimeManagement.Logic.Entities.ServiceTemplate" Collapsed="true">
     <Position X="3.25" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAgAAAAAAAgAAIAAAAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>gAAgAAAAAAAgAAIEAAAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Entities\ServiceTemplate.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -81,7 +81,7 @@
   <Class Name="QTTimeManagement.Logic.Entities.TimeBlock" Collapsed="true">
     <Position X="2" Y="7.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAIAACAIAAAAAAIEAAAAAACBAAAAUAAAAAAAAAAABIA=</HashCode>
+      <HashCode>AAIAACAIAAAAAAIEAAAAAACBAAAAUAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\TimeBlock.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -105,6 +105,13 @@
       <FileName>Entities\ValidityEntity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="QTTimeManagement.Logic.Entities.Holiday" Collapsed="true">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAQAAAAAAEABAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Holiday.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Interface Name="QTTimeManagement.Logic.Interfaces.IRateable" Collapsed="true">
     <Position X="10" Y="3.25" Width="1.5" />

@@ -244,7 +244,7 @@ namespace QTTimeManagement.ConApp
 
         private static Employee CreateEmployees()
         {
-            using var ctrl = new QTTimeManagement.Logic.Controllers.EmployeeController();
+            using var ctrl = new QTTimeManagement.Logic.Controllers.EmployeesController();
             var emp1 = new Employee()
             {
                 DayOfBirth = new DateTime(1989, 6, 10),
