@@ -59,8 +59,8 @@ namespace QTTimeManagement.ConApp
 
             var ca1 = new CollectiveAgreement()
             {
-                Name = "Test101",
-                Begin = DateTime.Now.AddDays(1),
+                Name = "Test1",
+                Begin = DateTime.Now.AddDays(-1),
                 NightHoursBegin = DateTime.Now,
                 NightHoursEnd = DateTime.Now.AddHours(4),
                 MaximumUnpaidBreakDuration = new TimeSpan(1, 30, 0),
@@ -97,16 +97,34 @@ namespace QTTimeManagement.ConApp
 
             using var ctrl = new Logic.Controllers.CollectiveAgreementsController();
 
+            var service = new Service()
+            {
+                ServiceDay = DateTime.UtcNow
+            };
+
+            //Task.Run(async () =>
+            //{
+            //    await ctrl.InsertAsync(ca1);
+            //    await ctrl.InsertAsync(ca3);
+            //    await ctrl.InsertAsync(ca2);
+            //    await ctrl.InsertAsync(ca4);
+            //    await ctrl.SaveChangesAsync();
+            //}).Wait();
+
+            Console.WriteLine(service.CompliantNotice);
+
             Task.Run(async () =>
             {
-                await ctrl.InsertAsync(ca1);
-                //await ctrl.InsertAsync(ca3);
-                //await ctrl.InsertAsync(ca2);
-                //await ctrl.InsertAsync(ca4);
-                await ctrl.SaveChangesAsync();
+                await ctrl.CheckServiceAsync(service);
             }).Wait();
 
+            Console.WriteLine(service.CompliantNotice);
 
+            Task.Run(async () =>
+            {
+                await ctrl.CheckServiceAsync(service);
+            }).Wait();
+            Console.WriteLine(service.CompliantNotice);
         }
 
     }

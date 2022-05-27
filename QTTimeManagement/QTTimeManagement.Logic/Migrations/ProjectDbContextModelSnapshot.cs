@@ -152,7 +152,7 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<double?>("TransferVacationDays")
                         .HasColumnType("float");
 
-                    b.Property<double>("VacationWeeksPerYear")
+                    b.Property<double>("VacationDaysPerYear")
                         .HasColumnType("float");
 
                     b.Property<double>("WeeklyHours")
