@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace QTTimeManagement.Logic.Controllers
 {
-    public sealed class RateController : GenericValidityController<Rate>
+    public sealed class RatesController : GenericValidityController<Rate>
     {
 
         #region Contructor
-        public RateController()
+        public RatesController()
         {
         }
 
-        public RateController(ControllerObject other) : base(other)
+        public RatesController(ControllerObject other) : base(other)
         {
         }
         #endregion #region Contructor

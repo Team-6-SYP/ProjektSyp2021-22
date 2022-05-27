@@ -3,19 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 
 namespace QTTimeManagement.Logic.Controllers
 {
-    public sealed class EmployeeController : GenericController<Employee>
+    public sealed class EmployeesController : GenericController<Employee>
     {
         #region Constructor
-        public EmployeeController()
+        public EmployeesController()
         {
         }
 
-        public EmployeeController(ControllerObject other) : base(other)
+        public EmployeesController(ControllerObject other) : base(other)
         {
         }
         #endregion Constructor
@@ -77,6 +78,7 @@ namespace QTTimeManagement.Logic.Controllers
             if (actionType == ActionType.Insert)
             {
                 CheckEntity(entity);
+
             }
 
             if (actionType == ActionType.Update)
@@ -95,7 +97,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region Entity Check
         private void CheckEntity(Employee entity)
         {
-            if (!entity.Email.Contains('@') && !entity.Email.Contains('.'))
+            if (!ValidateEmailAdress(entity.Email))
                 throw new Modules.Exceptions.LogicException($"Die Email Adresse {entity.Email} ist ungültig!!");
 
             if (entity.FirstName == string.Empty || entity.LastName == string.Empty)
@@ -124,6 +126,21 @@ namespace QTTimeManagement.Logic.Controllers
 
 
         }
+
+        private static bool ValidateEmailAdress(string email)
+        {
+            bool valid = false;
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+
+            if (match.Success)
+                valid = true;
+
+            return valid;
+        }
+
+
+
         #endregion Entity Check
 
 

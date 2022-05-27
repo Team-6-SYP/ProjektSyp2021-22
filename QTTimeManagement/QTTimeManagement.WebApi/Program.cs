@@ -9,7 +9,8 @@ builder.Services.AddSwaggerGen();
 
 // Add transient Controllers
 builder.Services.AddTransient<QTTimeManagement.Logic.Controllers.CollectiveAgreementsController>();
-
+builder.Services.AddTransient<QTTimeManagement.Logic.Controllers.EmployeesController>();
+builder.Services.AddTransient<QTTimeManagement.Logic.Controllers.RatesController>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
