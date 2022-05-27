@@ -181,7 +181,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region InsertNewTimeBlocks
         private async Task<IEnumerable<TimeBlock>> InsertServiceTimeblocksAsync(Service entity)
         {
-            using var timeBlocksctrl = new TimeBlocksController(this);
+            using var timeBlocksctrl = new TimeBlocksController();
             var timeBlocks = new List<TimeBlock>();
 
             foreach (var item in entity.TimeBlocks)
@@ -221,7 +221,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region UpdateTimeBlock
         private async Task<Service> UpdateTimeBlock(Service entity)
         {
-            using var timeBlocksCtrl = new TimeBlocksController(this);
+            using var timeBlocksCtrl = new TimeBlocksController();
             var check = await timeBlocksCtrl.GetByServiceIdAsync(entity.Id);
             var result = new Service();
             if (check == null)
@@ -239,7 +239,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region DeleteServiceTimeBlocks
         private async Task DeleteTimeblocksAsync(Service service)
         {
-            using var timeBlocksCtrl = new TimeBlocksController(this);
+            using var timeBlocksCtrl = new TimeBlocksController();
             var check = await timeBlocksCtrl.GetByServiceIdAsync(service.Id);
             if(check != null)
             {
@@ -255,7 +255,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region GetServiceTimeBlocks
         private IEnumerable<TimeBlock> GetServiceTimeBlocks(int serviceId)
         {
-            using var timeBlockCtrl = new TimeBlocksController(this);
+            using var timeBlockCtrl = new TimeBlocksController();
 
             return Task.Run(async () => await timeBlockCtrl.GetByServiceIdAsync(serviceId)).Result;
 
@@ -265,7 +265,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region GetServiceTemplate
         private ServiceTemplate GetSeviceTemplate(int serviceTemplateId)
         {
-            using var templateCtrl = new ServiceTemplatesController(this);
+            using var templateCtrl = new ServiceTemplatesController();
 
             return Task.Run(async () => await templateCtrl.GetByIdAsync(serviceTemplateId)).Result ?? throw new Modules.Exceptions.LogicException($"Das Template mit der {serviceTemplateId} wurde nicht gefunden");
         }
@@ -274,7 +274,7 @@ namespace QTTimeManagement.Logic.Controllers
         #region GetEmployee
         private Employee GetEmployeeById(int employeeId)
         {
-            using var employeeCtrl = new EmployeeController(this);
+            using var employeeCtrl = new EmployeesController();
 
             return Task.Run(async() => await employeeCtrl.GetByIdAsync(employeeId)).Result ?? throw new Modules.Exceptions.LogicException($" Der Angestellte mit der {employeeId} wurde nicht gefunden");
         }
