@@ -4,6 +4,7 @@ using QTTimeManagement.Logic.Modules.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,14 +21,16 @@ namespace QTTimeManagement.Logic.Controllers
         {
         }
 
-        public IEnumerable<TEntity> GetRelatedData(Predicate<TEntity> predicate)
+        public Task<IEnumerable<TEntity>> GetRelatedDataAsync(Predicate<TEntity> predicate)
         {
-            return EntitySet.AsEnumerable().Where(e => predicate(e)).ToList();
+            return Task.Run(() => {
+                return EntitySet.AsEnumerable().Where(e => predicate(e));
+            });
         }
 
-        private void SetEndDatesInsertAndUpdate(TEntity entity, Predicate<TEntity> predicate)
+        private async Task SetEndDatesInsertAndUpdateAsync(TEntity entity, Predicate<TEntity> predicate)
         {
-            var database = GetRelatedData(predicate);
+            var database = await GetRelatedDataAsync(predicate).ConfigureAwait(false);
 
             var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
 
@@ -53,9 +56,9 @@ namespace QTTimeManagement.Logic.Controllers
                 throw new LogicException($"Es gibt bereits ein Element mit Gültigkeitsbeginn am {DateOnly.FromDateTime(e1.Begin)}");
         }
 
-        private void SetEndDatesDelete(TEntity entity, Predicate<TEntity> predicate)
+        private async Task SetEndDatesDeleteAsync(TEntity entity, Predicate<TEntity> predicate)
         {
-            var database = GetRelatedData(predicate);
+            var database = await GetRelatedDataAsync(predicate).ConfigureAwait(false);
 
             var orderedSubSet = EntitySet.Local.Where(e => predicate(e)).OrderBy(e => e.Begin).ToList();
 
@@ -76,22 +79,30 @@ namespace QTTimeManagement.Logic.Controllers
         {
             if (actionType == ActionType.Insert || actionType == ActionType.Update)
             {
-                SetEndDatesInsertAndUpdate(entity, entity.VadilityPredicate);
+                Task.Run(async () =>
+                {
+                    await SetEndDatesInsertAndUpdateAsync(entity, entity.VadilityPredicate).ConfigureAwait(false);
+                }).Wait();          
             }
 
             if (actionType == ActionType.Delete)
             {
-                SetEndDatesDelete(entity, entity.VadilityPredicate);
+                Task.Run(async () =>
+                {
+                    await SetEndDatesDeleteAsync(entity, entity.VadilityPredicate).ConfigureAwait(false);
+                }).Wait();          
             }
 
             base.BeforeActionExecute(actionType, entity);
         }
 
-        public TEntity? GetByDateTimeAsync(DateTime date, Predicate<TEntity> predicate)
+        public async Task<TEntity?> GetByDateTimeAsync(DateTime date)
         {
-            var database = GetRelatedData(predicate);
+            var result = new TEntity();
 
-            return database.FirstOrDefault(e => date >= e.Begin && (e.End == null ? true : date <= e.End));
+            result = await EntitySet.AsQueryable().OrderByDescending(e => e.Begin).FirstOrDefaultAsync(e => date.Date >= e.Begin.Date && (e.End == null ? true : date.Date <= e.End.Value.Date)).ConfigureAwait(false);
+
+            return result;
         }
     }
 }

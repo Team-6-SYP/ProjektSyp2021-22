@@ -200,48 +200,54 @@ namespace QTTimeManagement.Logic.Controllers
         #region CheckServices
         public async Task<bool> CheckServiceAsync(Service service)
         {
-            var collectiveAgreement = service.CollectiveAgreementId != null ? await GetByIdAsync(service.CollectiveAgreementId.Value) : null;
+            //var collectiveAgreement = await EntitySet.OrderByDescending(ca => ca.Begin)
+            //                            .FirstOrDefaultAsync(ca => ca.Begin <= service.ServiceDay).ConfigureAwait(false);
 
-            //Valitation prüfen --> mit null aufpassen
-            var collectiveAgreementNew = await EntitySet.OrderBy(ca => ca.Begin)
-                                        .LastOrDefaultAsync(ca => ca.Begin <= service.ServiceDay &&
-                                           (ca.End != null ? ca.End >= service.ServiceDay : true))
-                                        .ConfigureAwait(false);
+            var collectiveAgreement = await GetByDateTimeAsync(service.ServiceDay);
 
-            if (collectiveAgreement == null && collectiveAgreementNew == null)
+            if (collectiveAgreement == null)
             {
                 return service.IsCompliant = false;
             }
 
-            if (service.CompliantNotice == null)
-            {
-                service.CompliantNotice = string.Empty;
-            }
+            service.CollectiveAgreementId = collectiveAgreement.Id;
 
-            if (collectiveAgreement != null )
-            {
+            var newNotice = CreateTagForNotice(collectiveAgreement);
 
-            }
+            newNotice = newNotice.AddLastLine($"Do some Checking {someCount++}");
 
+            newNotice = newNotice.AddLastLine(CreateEndTag(collectiveAgreement));
 
+            AddNoticeToService(service, newNotice);
 
-
-            if (service.CompliantNotice == null)
-                service.CompliantNotice = string.Empty;
-
-            var oldNotices = service.CompliantNotice;
-            service.CompliantNotice = string.Empty;
-
-            return service.IsCompliant;
+            return service.IsCompliant = true; //bei check ändern
 
         }
 
-        private string GetLastNotice(ref string notice)
+        private int someCount = 0;
+
+        private string[] GetLastNotice(Service service)
         {
+            if (service.CompliantNotice == null)
+                return Array.Empty<string>();
 
+            var lines = service.CompliantNotice.Split("\n");
+            var result = new List<string>();
 
+            var adding = false;
 
-            return string.Empty;
+            foreach (var line in lines)
+            {
+                if(line.StartsWith(StartTag))
+                    adding = true;
+
+                if(adding)
+                    result.Add(line);
+
+                if (line.EndsWith(EndTag))
+                    break;
+            }
+            return result.ToArray();
         }
 
         private const string StartTag = "#Id";
@@ -249,12 +255,45 @@ namespace QTTimeManagement.Logic.Controllers
 
         private string CreateTagForNotice(CollectiveAgreement collectiveAgreement)
         {
-            return $"{StartTag}: {collectiveAgreement.Id} {collectiveAgreement.Name}\n{DateTime.Now}";
+            return $"{DateTime.UtcNow}\n{StartTag}: {collectiveAgreement.Id} {collectiveAgreement.Name}";
         }
 
         private string CreateEndTag(CollectiveAgreement collectiveAgreement)
         {
-            return $"{EndTag}: {collectiveAgreement.Name}";
+            return $"{EndTag}: {collectiveAgreement.Name}\n";
+        }
+
+        private void AddNoticeToService(Service service, string newNotice)
+        {
+            if(service.CompliantNotice == null)
+            {
+                service.CompliantNotice = newNotice;
+                return;
+            }
+
+            var lastNotice = GetLastNotice(service);
+
+            var newNoticeArray = newNotice.Split("\n");
+
+            //Console.WriteLine(lastNotice.Count() + " " + newNoticeArray.Count());
+
+            if (lastNotice.Count() != newNoticeArray.Count()-1)
+            {
+                service.CompliantNotice = service.CompliantNotice!.AddFirstLine(newNotice);
+                return;
+            }
+
+            var count = 1;
+            
+            foreach (var line in lastNotice)
+            {
+                if (line != newNoticeArray[count])
+                {
+                    service.CompliantNotice = service.CompliantNotice!.AddFirstLine(newNotice);
+                    return;
+                }
+                count++;
+            }
         }
         #endregion
 
