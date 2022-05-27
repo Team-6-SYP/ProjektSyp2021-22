@@ -21,7 +21,7 @@ namespace QTTimeManagement.Logic.Controllers
         {
             Context = context;
             contextOwner = true;
-        }
+       }
         internal ControllerObject(ControllerObject other)
         {
             if (other is null)

@@ -26,6 +26,14 @@ namespace QTTimeManagement.Logic.Controllers
         {
             return base.GetByIdAsync(id);
         }
+        public Task<TimeBlock[]> GetByTemplateIdAsync(int id)
+        {
+            return EntitySet.AsNoTracking().Where(x => x.ServiceTemplateId == id).ToArrayAsync();
+        }
+        public Task<TimeBlock[]> GetByServiceIdAsync(int id)
+        {
+            return EntitySet.AsNoTracking().Where(x => x.ServiceId == id).ToArrayAsync();
+        }
         #endregion
 
         #region Insert

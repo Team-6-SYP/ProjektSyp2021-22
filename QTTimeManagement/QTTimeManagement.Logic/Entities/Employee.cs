@@ -59,5 +59,10 @@ namespace QTTimeManagement.Logic.Entities
         //navigagion Properties
         public IEnumerable<Rate> Rates { get; set; } = new List<Rate>();
         public IEnumerable<Service> Services { get; set; } = new List<Service>();
+
+        public override string ToString()
+        {
+            return $"Emp: {Id} - {FirstName} - {LastName}";
+        }
     }
 }

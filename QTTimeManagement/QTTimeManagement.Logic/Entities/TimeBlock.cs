@@ -32,5 +32,6 @@ namespace QTTimeManagement.Logic.Entities
         public Service? Service { get; set; }
         public ServiceTemplate? ServiceTemplate { get; set; }
 
+        
     }
 }

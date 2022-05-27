@@ -34,5 +34,9 @@ namespace QTTimeManagement.Logic.Entities
         {
             VadilityPredicate = (st) => st.Name == Name;
         }
+        public override string ToString()
+        {
+            return $"{Id} - {Name} - {Validitydays} - {TimeBlocks}";	
+        }
     }
 }

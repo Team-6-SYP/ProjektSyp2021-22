@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QTTimeManagement.Logic.Migrations
 {
     /// <inheritdoc />
-    public partial class intidb : Migration
+    public partial class Test1Db : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,7 +60,7 @@ namespace QTTimeManagement.Logic.Migrations
                     WeeklyHours = table.Column<double>(type: "float", nullable: false),
                     WorkingDaysPerWeek = table.Column<int>(type: "int", nullable: false),
                     BeginWorkingWeek = table.Column<int>(type: "int", nullable: false),
-                    VacationWeeksPerYear = table.Column<double>(type: "float", nullable: false),
+                    VacationDaysPerYear = table.Column<double>(type: "float", nullable: false),
                     TransferVacationDays = table.Column<double>(type: "float", nullable: true),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),

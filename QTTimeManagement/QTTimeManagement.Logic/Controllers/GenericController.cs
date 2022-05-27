@@ -30,7 +30,7 @@ namespace QTTimeManagement.Logic.Controllers
 
         private DbSet<TEntity>? dbSet = null;
         public GenericController()
-            : base(new DataContext.ProjectDbContext())
+            :base(new DataContext.ProjectDbContext())
         {
 
         }

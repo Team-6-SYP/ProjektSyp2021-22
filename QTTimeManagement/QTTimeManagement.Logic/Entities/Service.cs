@@ -65,5 +65,10 @@ namespace QTTimeManagement.Logic.Entities
         public CollectiveAgreement? CollectiveAgreement { get; set; }
 
         //Kommentar
+
+        public override string ToString()
+        {
+            return $"Service: {Id} - {Name} - {Employee} - {ServiceTemplate} - {ServiceDay} - {ServiceType}";
+        }
     }
 }

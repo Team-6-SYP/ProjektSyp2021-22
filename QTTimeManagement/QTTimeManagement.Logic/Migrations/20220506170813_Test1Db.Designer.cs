@@ -12,8 +12,8 @@ using QTTimeManagement.Logic.DataContext;
 namespace QTTimeManagement.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20220503174741_intidb")]
-    partial class intidb
+    [Migration("20220506170813_Test1Db")]
+    partial class Test1Db
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,7 +155,7 @@ namespace QTTimeManagement.Logic.Migrations
                     b.Property<double?>("TransferVacationDays")
                         .HasColumnType("float");
 
-                    b.Property<double>("VacationWeeksPerYear")
+                    b.Property<double>("VacationDaysPerYear")
                         .HasColumnType("float");
 
                     b.Property<double>("WeeklyHours")
