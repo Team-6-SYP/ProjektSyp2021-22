@@ -28,7 +28,7 @@ namespace QTTimeManagement.Logic.Entities
 
         public Rate()
         {
-            VadilityPredicate = (r) => r.RateType == RateType && r.EmployeeId == r.EmployeeId;
+            VadilityPredicate = (r) => r.RateType == RateType && r.EmployeeId == EmployeeId;
         }
     }
 }
